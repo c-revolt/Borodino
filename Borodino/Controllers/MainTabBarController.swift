@@ -17,7 +17,7 @@ class MainTabBarController: UITabBarController {
     
     private func setupControllers() {
         
-        let galleryViewController = GalleryViewController()
+        let galleryViewController = TestHomeController()
         let mapViewController = MapViewController()
         let infoViewController = InfoViewController()
         

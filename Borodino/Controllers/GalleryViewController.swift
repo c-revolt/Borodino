@@ -11,8 +11,10 @@ class GalleryViewController: UIViewController {
 
     // properties
     var collectionView: UICollectionView! = nil
-    let monuments = Bundle.main.decode([Monument].self, from: "monuments.json")
+    let monuments = Bundle.main.decode([Monument].self, from: "testData.json")
     var searchMonuments = [Monument]()
+    
+    //var monumentsData: Monument?
     
     
     override func viewDidLoad() {
@@ -102,6 +104,7 @@ extension GalleryViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.gallery_ID_cell, for: indexPath) as! GalleryCell
+        
         
         
         cell.galleryImageView.image = UIImage(named: searchMonuments[indexPath.item].image)

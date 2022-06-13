@@ -7,9 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D01D6AA62856F48B00FBF165 /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D6AA52856F48B00FBF165 /* PersonModel.swift */; };
+		D01D6AA72856FBCE00FBF165 /* persons.json in Resources */ = {isa = PBXBuildFile; fileRef = D0A12C0A28533A6E00399BC3 /* persons.json */; };
+		D01D6AA9285704C300FBF165 /* monuments.json in Resources */ = {isa = PBXBuildFile; fileRef = D01D6AA8285704C300FBF165 /* monuments.json */; };
+		D01D6AAB285705D100FBF165 /* places.json in Resources */ = {isa = PBXBuildFile; fileRef = D01D6AAA285705D100FBF165 /* places.json */; };
+		D01D6AAD285706A300FBF165 /* interesting.json in Resources */ = {isa = PBXBuildFile; fileRef = D01D6AAC285706A300FBF165 /* interesting.json */; };
 		D059751B283E1EDB004A6EFB /* MKMapView Extrntion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D059751A283E1EDB004A6EFB /* MKMapView Extrntion.swift */; };
+		D059751D283E2594004A6EFB /* MonumentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D059751C283E2594004A6EFB /* MonumentLocation.swift */; };
+		D0651E5C283F5B6000CE23D9 /* mainData.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0651E5B283F5B6000CE23D9 /* mainData.geojson */; };
+		D0651E5E283F8AC000CE23D9 /* testData.json in Resources */ = {isa = PBXBuildFile; fileRef = D0651E5D283F8AC000CE23D9 /* testData.json */; };
 		D090ED3A2824E2FE00BFB0B4 /* MonumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D090ED392824E2FE00BFB0B4 /* MonumentViewController.swift */; };
-		D0D41074283B9EC800479D4A /* monuments.json in Resources */ = {isa = PBXBuildFile; fileRef = D0D41073283B9EC800479D4A /* monuments.json */; };
+		D0A12BFF285262F600399BC3 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A12BFE285262F600399BC3 /* HomeViewController.swift */; };
+		D0A12C01285265E100399BC3 /* CollectionViewInTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A12C00285265E100399BC3 /* CollectionViewInTableViewCell.swift */; };
+		D0A12C042852783E00399BC3 /* paintings.json in Resources */ = {isa = PBXBuildFile; fileRef = D0A12C032852783E00399BC3 /* paintings.json */; };
+		D0A12C0628527BE700399BC3 /* PaintingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A12C0528527BE700399BC3 /* PaintingModel.swift */; };
+		D0A12C082853230800399BC3 /* TestHomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A12C072853230800399BC3 /* TestHomeController.swift */; };
+		D0A12C0C28535A4C00399BC3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A12C0B28535A4C00399BC3 /* HeaderView.swift */; };
+		D0A12C0E28535A9C00399BC3 /* PaintingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A12C0D28535A9C00399BC3 /* PaintingCollectionViewCell.swift */; };
+		D0A12C1028535AD000399BC3 /* MemorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A12C0F28535AD000399BC3 /* MemorialCollectionViewCell.swift */; };
+		D0A12C1228535B0400399BC3 /* PersonsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A12C1128535B0400399BC3 /* PersonsCollectionViewCell.swift */; };
+		D0A12C1428535B1100399BC3 /* PlacesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A12C1328535B1100399BC3 /* PlacesCollectionViewCell.swift */; };
+		D0A12C1628535B2A00399BC3 /* InterestingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A12C1528535B2A00399BC3 /* InterestingCollectionViewCell.swift */; };
+		D0A12C182853682C00399BC3 /* MGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A12C172853682C00399BC3 /* MGallery.swift */; };
+		D0D41074283B9EC800479D4A /* monu.json in Resources */ = {isa = PBXBuildFile; fileRef = D0D41073283B9EC800479D4A /* monu.json */; };
 		D0D41077283BA24300479D4A /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D41076283BA24300479D4A /* Bundle-Decodable.swift */; };
 		D0D41079283BA48900479D4A /* MonumentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D41078283BA48900479D4A /* MonumentModel.swift */; };
 		D0E002352822B782002B219F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E002342822B782002B219F /* AppDelegate.swift */; };
@@ -26,9 +46,29 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D01D6AA52856F48B00FBF165 /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
+		D01D6AA8285704C300FBF165 /* monuments.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = monuments.json; sourceTree = "<group>"; };
+		D01D6AAA285705D100FBF165 /* places.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = places.json; sourceTree = "<group>"; };
+		D01D6AAC285706A300FBF165 /* interesting.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = interesting.json; sourceTree = "<group>"; };
 		D059751A283E1EDB004A6EFB /* MKMapView Extrntion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView Extrntion.swift"; sourceTree = "<group>"; };
+		D059751C283E2594004A6EFB /* MonumentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonumentLocation.swift; sourceTree = "<group>"; };
+		D0651E5B283F5B6000CE23D9 /* mainData.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = mainData.geojson; sourceTree = "<group>"; };
+		D0651E5D283F8AC000CE23D9 /* testData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = testData.json; sourceTree = "<group>"; };
 		D090ED392824E2FE00BFB0B4 /* MonumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonumentViewController.swift; sourceTree = "<group>"; };
-		D0D41073283B9EC800479D4A /* monuments.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = monuments.json; sourceTree = "<group>"; };
+		D0A12BFE285262F600399BC3 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D0A12C00285265E100399BC3 /* CollectionViewInTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewInTableViewCell.swift; sourceTree = "<group>"; };
+		D0A12C032852783E00399BC3 /* paintings.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = paintings.json; sourceTree = "<group>"; };
+		D0A12C0528527BE700399BC3 /* PaintingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintingModel.swift; sourceTree = "<group>"; };
+		D0A12C072853230800399BC3 /* TestHomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHomeController.swift; sourceTree = "<group>"; };
+		D0A12C0A28533A6E00399BC3 /* persons.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = persons.json; sourceTree = "<group>"; };
+		D0A12C0B28535A4C00399BC3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		D0A12C0D28535A9C00399BC3 /* PaintingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintingCollectionViewCell.swift; sourceTree = "<group>"; };
+		D0A12C0F28535AD000399BC3 /* MemorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorialCollectionViewCell.swift; sourceTree = "<group>"; };
+		D0A12C1128535B0400399BC3 /* PersonsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonsCollectionViewCell.swift; sourceTree = "<group>"; };
+		D0A12C1328535B1100399BC3 /* PlacesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesCollectionViewCell.swift; sourceTree = "<group>"; };
+		D0A12C1528535B2A00399BC3 /* InterestingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestingCollectionViewCell.swift; sourceTree = "<group>"; };
+		D0A12C172853682C00399BC3 /* MGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MGallery.swift; sourceTree = "<group>"; };
+		D0D41073283B9EC800479D4A /* monu.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = monu.json; sourceTree = "<group>"; };
 		D0D41076283BA24300479D4A /* Bundle-Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
 		D0D41078283BA48900479D4A /* MonumentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonumentModel.swift; sourceTree = "<group>"; };
 		D0E002312822B782002B219F /* Borodino.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Borodino.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				D0D41078283BA48900479D4A /* MonumentModel.swift */,
+				D01D6AA52856F48B00FBF165 /* PersonModel.swift */,
+				D0A12C172853682C00399BC3 /* MGallery.swift */,
+				D0A12C0528527BE700399BC3 /* PaintingModel.swift */,
+				D059751C283E2594004A6EFB /* MonumentLocation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -69,7 +113,14 @@
 			isa = PBXGroup;
 			children = (
 				D0E0023D2822B78C002B219F /* Assets.xcassets */,
-				D0D41073283B9EC800479D4A /* monuments.json */,
+				D0A12C032852783E00399BC3 /* paintings.json */,
+				D0A12C0A28533A6E00399BC3 /* persons.json */,
+				D01D6AA8285704C300FBF165 /* monuments.json */,
+				D01D6AAA285705D100FBF165 /* places.json */,
+				D01D6AAC285706A300FBF165 /* interesting.json */,
+				D0D41073283B9EC800479D4A /* monu.json */,
+				D0651E5D283F8AC000CE23D9 /* testData.json */,
+				D0651E5B283F5B6000CE23D9 /* mainData.geojson */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -133,6 +184,8 @@
 				D0EFAFB828290343002537B4 /* MapViewController.swift */,
 				D0EFAFBA28290352002537B4 /* InfoViewController.swift */,
 				D0E0024D2822D7CD002B219F /* GalleryCell.swift */,
+				D0A12BFE285262F600399BC3 /* HomeViewController.swift */,
+				D0A12C072853230800399BC3 /* TestHomeController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -141,6 +194,13 @@
 			isa = PBXGroup;
 			children = (
 				D0E0023F2822B78C002B219F /* LaunchScreen.storyboard */,
+				D0A12C00285265E100399BC3 /* CollectionViewInTableViewCell.swift */,
+				D0A12C0B28535A4C00399BC3 /* HeaderView.swift */,
+				D0A12C0D28535A9C00399BC3 /* PaintingCollectionViewCell.swift */,
+				D0A12C0F28535AD000399BC3 /* MemorialCollectionViewCell.swift */,
+				D0A12C1128535B0400399BC3 /* PersonsCollectionViewCell.swift */,
+				D0A12C1328535B1100399BC3 /* PlacesCollectionViewCell.swift */,
+				D0A12C1528535B2A00399BC3 /* InterestingCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,9 +263,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D01D6AAB285705D100FBF165 /* places.json in Resources */,
+				D01D6AA72856FBCE00FBF165 /* persons.json in Resources */,
+				D0651E5C283F5B6000CE23D9 /* mainData.geojson in Resources */,
 				D0E002412822B78C002B219F /* LaunchScreen.storyboard in Resources */,
+				D0651E5E283F8AC000CE23D9 /* testData.json in Resources */,
+				D01D6AA9285704C300FBF165 /* monuments.json in Resources */,
+				D01D6AAD285706A300FBF165 /* interesting.json in Resources */,
 				D0E0023E2822B78C002B219F /* Assets.xcassets in Resources */,
-				D0D41074283B9EC800479D4A /* monuments.json in Resources */,
+				D0D41074283B9EC800479D4A /* monu.json in Resources */,
+				D0A12C042852783E00399BC3 /* paintings.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,13 +283,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D01D6AA62856F48B00FBF165 /* PersonModel.swift in Sources */,
+				D0A12C182853682C00399BC3 /* MGallery.swift in Sources */,
+				D0A12C0E28535A9C00399BC3 /* PaintingCollectionViewCell.swift in Sources */,
+				D0A12C0628527BE700399BC3 /* PaintingModel.swift in Sources */,
+				D059751D283E2594004A6EFB /* MonumentLocation.swift in Sources */,
 				D0E0024E2822D7CD002B219F /* GalleryCell.swift in Sources */,
 				D0EFAFB7282902F5002537B4 /* MainTabBarController.swift in Sources */,
+				D0A12C1028535AD000399BC3 /* MemorialCollectionViewCell.swift in Sources */,
+				D0A12C082853230800399BC3 /* TestHomeController.swift in Sources */,
 				D0E002392822B782002B219F /* GalleryViewController.swift in Sources */,
+				D0A12C0C28535A4C00399BC3 /* HeaderView.swift in Sources */,
 				D059751B283E1EDB004A6EFB /* MKMapView Extrntion.swift in Sources */,
+				D0A12BFF285262F600399BC3 /* HomeViewController.swift in Sources */,
 				D0D41079283BA48900479D4A /* MonumentModel.swift in Sources */,
+				D0A12C1428535B1100399BC3 /* PlacesCollectionViewCell.swift in Sources */,
+				D0A12C01285265E100399BC3 /* CollectionViewInTableViewCell.swift in Sources */,
 				D0E0024B2822D261002B219F /* UIColor Extention.swift in Sources */,
 				D0D41077283BA24300479D4A /* Bundle-Decodable.swift in Sources */,
+				D0A12C1228535B0400399BC3 /* PersonsCollectionViewCell.swift in Sources */,
+				D0A12C1628535B2A00399BC3 /* InterestingCollectionViewCell.swift in Sources */,
 				D090ED3A2824E2FE00BFB0B4 /* MonumentViewController.swift in Sources */,
 				D0EFAFB928290343002537B4 /* MapViewController.swift in Sources */,
 				D0E002352822B782002B219F /* AppDelegate.swift in Sources */,

@@ -10,6 +10,18 @@ import UIKit
 
 struct K {
     
+    static let collectionViewInTableViewCell = "CollectionViewInTableViewCell"
+    
+    struct SectionTitles {
+        static let paintings = "Картины Художников"
+        static let presons = "Персоны"
+        static let monuments = "Памятники"
+        static let places = "Места"
+        static let interesting = "Интересное"
+    }
+    
+    
+    
     static let gallery_ID_cell = "GalleryIDCell"
     static let publication_ID_cell = "PublicationIDCell"
     

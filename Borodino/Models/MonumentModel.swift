@@ -8,11 +8,24 @@
 import Foundation
 
 struct Monument: Decodable {
+        
+    var id: Int
+    var title: String
+    var image: String
+    var content: String
+    var coordinate: [Double]
+}
+
+struct TestMonument: Decodable {
+    
+    var objects: [Object]
+}
+
+struct Object: Decodable {
     
     var id: Int
     var title: String
     var image: String
     var content: String
-    var lon: Double
-    var lat: Double
+    var coordinate: [Double]
 }
