@@ -9,12 +9,13 @@ import Foundation
 
 struct MGallery: Decodable, Hashable {
     
-    var id: Int
-    var image: String
-    var title: String
-    var author: String
-    var year: String
-    var overview: String
+    var id: Int?
+    var image: String?
+    var title: String?
+    var role: String?
+    var years: String?
+    var emblem: String?
+    var overview: String?
     
 }
 

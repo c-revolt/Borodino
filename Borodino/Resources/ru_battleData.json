@@ -1,0 +1,41 @@
+[
+        {
+            "id": 1,
+            "image": "russia",
+            "title": "Силы России",
+            "role": "",
+            "year": "",
+            "emblem": "",
+            "overview": "~129-138 тыс."
+        },
+        {
+            "id": 2,
+            "image": "russia",
+            "title": "Количество орудий",
+            "role": "",
+            "year": "",
+            "emblem": "",
+            "overview": "624"
+        },
+        {
+            "id": 3,
+            "image": "russia",
+            "title": "Солдат убито/ранено",
+            "role": "",
+            "year": "",
+            "emblem": "",
+            "overview": "39-46 тыс."
+
+        },
+        {
+            "id": 4,
+            "image": "russia",
+            "title": "Генералов убито/ранено",
+            "role": "",
+            "year": "",
+            "emblem": "",
+            "overview": "26"
+
+        }
+]
+

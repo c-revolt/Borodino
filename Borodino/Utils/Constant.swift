@@ -22,8 +22,13 @@ struct K {
     
     
     
-    static let gallery_ID_cell = "GalleryIDCell"
-    static let publication_ID_cell = "PublicationIDCell"
+    static let paintingIdCell = "PaintingCell"
+    static let frPersonIDCell = "FrPersonCell"
+    static let ruPersonIDCell = "RuPersonCell"
+    static let frBattleIDCell = "FrBattleDataCell"
+    static let ruBattleIIDCell = "RuBattleDataCell"
+    
+    static let sectionHeader = "SectionHeader"
     
     struct NavControllerTitle {
         static let gallery_title = "Галерея"

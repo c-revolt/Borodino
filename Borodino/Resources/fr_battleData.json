@@ -1,0 +1,40 @@
+[
+        {
+            "id": 1,
+            "image": "france",
+            "title": "Силы Франции",
+            "role": "",
+            "year": "",
+            "emblem": "",
+            "overview": "~138 тыс."
+        },
+        {
+            "id": 2,
+            "image": "france",
+            "title": "Количество орудий",
+            "role": "",
+            "year": "",
+            "emblem": "",
+            "overview": "587"
+        },
+        {
+            "id": 3,
+            "image": "france",
+            "title": "Солдат убито/ранено",
+            "role": "",
+            "year": "",
+            "emblem": "",
+            "overview": "30-40 тыс."
+
+        },
+        {
+            "id": 4,
+            "image": "france",
+            "title": "Генералов убито/ранено",
+            "role": "",
+            "year": "",
+            "emblem": "",
+            "overview": "49"
+
+        }
+]
