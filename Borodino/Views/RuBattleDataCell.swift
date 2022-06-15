@@ -24,7 +24,7 @@ class RuBattleDataCell: UICollectionViewCell, ConfiguringCell {
     private let countTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir", size: 14)
-        label.textColor = .systemGreen
+        label.textColor = .russianGreen()
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = .boldSystemFont(ofSize: 14)
@@ -58,7 +58,7 @@ class RuBattleDataCell: UICollectionViewCell, ConfiguringCell {
         backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         layer.cornerRadius = 7
         layer.borderWidth = 1
-        layer.borderColor = UIColor.systemGreen.cgColor
+        layer.borderColor = UIColor.russianGreen().cgColor
     }
     
     required init?(coder: NSCoder) {
@@ -95,8 +95,8 @@ extension RuBattleDataCell {
         
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: ruIcon.bottomAnchor, constant: 8),
-            title.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 3),
-            title.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -3)
+            title.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 2),
+            title.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -2)
             
             
         ])

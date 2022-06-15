@@ -32,17 +32,27 @@ class PaintingCollectionViewCell: UICollectionViewCell, ConfiguringCell {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .left
-        label.font = UIFont(name: "Avenir", size: 14)
+        label.font = UIFont(name: "Avenir", size: 21)
         label.numberOfLines = 0
-        label.text = "Helo, world!"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
+    }()
+    
+    private let readButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .systemYellow
+        button.setTitle("Читать", for: .normal)
+        button.setTitleColor(UIColor.black, for: .normal)
+        button.layer.cornerRadius = 7
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubviews()
+        
         applyConstraints()
     }
     
@@ -68,7 +78,9 @@ extension PaintingCollectionViewCell {
     
     private func addSubviews() {
         contentView.addSubview(paintingImageView)
-        contentView.addSubview(paintingTitleLabel)
+        createGradient()
+        addSubview(paintingTitleLabel)
+        addSubview(readButton)
     }
     
     private func applyConstraints() {
@@ -76,22 +88,34 @@ extension PaintingCollectionViewCell {
         NSLayoutConstraint.activate([
             paintingImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             paintingImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            paintingImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            paintingImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            paintingImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            paintingTitleLabel.topAnchor.constraint(equalTo: paintingImageView.bottomAnchor),
-            paintingTitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            paintingTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            paintingTitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            paintingTitleLabel.heightAnchor.constraint(equalToConstant: 16)
+            paintingTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            paintingTitleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
+            paintingTitleLabel.widthAnchor.constraint(equalToConstant: 250)
         
+        ])
+        
+        NSLayoutConstraint.activate([
+            readButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -15),
+            readButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -15),
+            readButton.widthAnchor.constraint(equalToConstant: 80),
+            readButton.heightAnchor.constraint(equalToConstant: 35)
         ])
         
     }
     
-    
-    
+    private func createGradient() {
+        let gradient = CAGradientLayer()
+        gradient.colors = [
+            UIColor.clear.cgColor,
+            UIColor.systemBackground.cgColor
+        ]
+        gradient.frame = bounds
+        layer.addSublayer(gradient)
+    }
 }
 
-// MARK: - Configured with SDWebImages

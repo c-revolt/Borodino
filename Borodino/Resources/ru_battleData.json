@@ -2,7 +2,7 @@
         {
             "id": 1,
             "image": "russia",
-            "title": "Силы России",
+            "title": "Силы Российской Империи",
             "role": "",
             "year": "",
             "emblem": "",
@@ -11,11 +11,11 @@
         {
             "id": 2,
             "image": "russia",
-            "title": "Количество орудий",
+            "title": "Количество артиллерийстских орудий",
             "role": "",
             "year": "",
             "emblem": "",
-            "overview": "624"
+            "overview": "624 ед."
         },
         {
             "id": 3,
@@ -34,7 +34,7 @@
             "role": "",
             "year": "",
             "emblem": "",
-            "overview": "26"
+            "overview": "26 чел."
 
         }
 ]

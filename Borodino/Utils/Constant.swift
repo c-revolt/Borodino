@@ -13,7 +13,7 @@ struct K {
     static let collectionViewInTableViewCell = "CollectionViewInTableViewCell"
     
     struct SectionTitles {
-        static let paintings = "Картины Художников"
+        static let paintings = "Хронология"
         static let presons = "Персоны"
         static let monuments = "Памятники"
         static let places = "Места"
@@ -27,6 +27,7 @@ struct K {
     static let ruPersonIDCell = "RuPersonCell"
     static let frBattleIDCell = "FrBattleDataCell"
     static let ruBattleIIDCell = "RuBattleDataCell"
+    static let interestingIDCell = "InterestingCell"
     
     static let sectionHeader = "SectionHeader"
     

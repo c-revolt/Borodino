@@ -24,7 +24,7 @@ class FrBattleDataCell: UICollectionViewCell, ConfiguringCell {
     private let countTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir", size: 14)
-        label.textColor = .systemBlue
+        label.textColor = #colorLiteral(red: 0.3662570715, green: 0.5401275754, blue: 0.8284265399, alpha: 1)
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = .boldSystemFont(ofSize: 14)
@@ -41,14 +41,6 @@ class FrBattleDataCell: UICollectionViewCell, ConfiguringCell {
         return imageView
     }()
     
-    private let gradientView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemBlue
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -58,7 +50,7 @@ class FrBattleDataCell: UICollectionViewCell, ConfiguringCell {
         backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         layer.cornerRadius = 7
         layer.borderWidth = 1
-        layer.borderColor = UIColor.systemBlue.cgColor
+        layer.borderColor = #colorLiteral(red: 0.3662570715, green: 0.5401275754, blue: 0.8284265399, alpha: 1)
     }
     
     required init?(coder: NSCoder) {
@@ -96,8 +88,8 @@ extension FrBattleDataCell {
         
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: frIcon.bottomAnchor, constant: 8),
-            title.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 3),
-            title.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -3)
+            title.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 2),
+            title.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -2)
             
             
         ])

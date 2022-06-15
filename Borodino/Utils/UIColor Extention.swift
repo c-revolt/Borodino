@@ -9,11 +9,15 @@ import UIKit
 
 extension UIColor {
     
-    static func navigationControllerColor() -> UIColor {
-        return #colorLiteral(red: 0.9656720757, green: 0.9654763341, blue: 0.9593788981, alpha: 1)
+    static func franchBlue() -> UIColor {
+        return #colorLiteral(red: 0.3662570715, green: 0.5401275754, blue: 0.8284265399, alpha: 1)
     }
     
-    static func mainBlackColor() -> UIColor {
-        return #colorLiteral(red: 0.1726317704, green: 0.1726317704, blue: 0.1726317704, alpha: 1)
+    static func russianGreen() -> UIColor {
+        return #colorLiteral(red: 0.3656271994, green: 0.8218191862, blue: 0.5959987044, alpha: 1)
+    }
+    
+    static func mainGold() -> UIColor {
+        return #colorLiteral(red: 0.9676191211, green: 0.9899454713, blue: 0.6198713183, alpha: 1)
     }
 }

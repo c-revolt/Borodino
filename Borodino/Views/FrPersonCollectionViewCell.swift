@@ -17,7 +17,8 @@ class FrPersonCollectionViewCell: UICollectionViewCell, ConfiguringCell  {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 35
+        imageView.layer.cornerRadius = 31
+        imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 1
         imageView.layer.borderColor = UIColor.systemBlue.cgColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -126,12 +127,12 @@ extension FrPersonCollectionViewCell {
             gradientView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             gradientView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             gradientView.heightAnchor.constraint(equalToConstant: 84),
-            gradientView.widthAnchor.constraint(equalToConstant: 8)
+            gradientView.widthAnchor.constraint(equalToConstant: 6)
         ])
         
         NSLayoutConstraint.activate([
             personEmblermImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            personEmblermImage.trailingAnchor.constraint(equalTo: gradientView.leadingAnchor, constant: -5),
+            personEmblermImage.trailingAnchor.constraint(equalTo: gradientView.leadingAnchor, constant: -7),
             personEmblermImage.heightAnchor.constraint(equalToConstant: 40),
             personEmblermImage.widthAnchor.constraint(equalToConstant: 40)
             

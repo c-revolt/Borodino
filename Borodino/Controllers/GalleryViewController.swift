@@ -11,25 +11,28 @@ class GalleryViewController: UIViewController {
     
     enum Section: Int, CaseIterable {
         case paintings = 0
-        case f_persons = 1
-        case frBattleData = 2
-        case ru_persons = 3
-        case ruBattleData = 4
+        case ruBattleData = 1     // f_persons
+        case ru_persons = 2  // frBattleData
+        case frBattleData = 3    // ru_persons
+        case f_persons = 4  // ruBattleData
+        case interestig = 5
         
         func description() -> String {
             switch self {
                 
             case .paintings:
-                return "Хронология Битвы"
-            case .f_persons:
-                return "Французские командующие"
-            case .frBattleData:
-                return "Французская сторона"
-            case .ru_persons:
-                return "Российские командующие"
+                return "ХРОНОЛОГИЯ БИТВЫ"
             case .ruBattleData:
                 return "Российская сторона"
+            case .ru_persons:
+                return "Российские командующие"
+            case .frBattleData:
+                return "Французская сторона"
+            case .f_persons:
+                return "Французские командующие"
 
+            case .interestig:
+                return "Интересное"
             }
         }
     }
@@ -50,7 +53,6 @@ class GalleryViewController: UIViewController {
         
         createNavigationBar()
         
-        addSubviews()
         setupCollectionView()
         
         createDataSource()
@@ -61,13 +63,14 @@ class GalleryViewController: UIViewController {
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, MGallery>()
         
-        snapshot.appendSections([.paintings, .f_persons, .frBattleData, .ru_persons, .ruBattleData])
+        snapshot.appendSections([.paintings, .ruBattleData, .ru_persons, .frBattleData, .f_persons, .interestig])
         
         snapshot.appendItems(paintings, toSection: .paintings)
-        snapshot.appendItems(fPersons, toSection: .f_persons)
-        snapshot.appendItems(frBattle, toSection: .frBattleData)
-        snapshot.appendItems(ruPersons, toSection: .ru_persons)
         snapshot.appendItems(ruBattle, toSection: .ruBattleData)
+        snapshot.appendItems(ruPersons, toSection: .ru_persons)
+        snapshot.appendItems(frBattle, toSection: .frBattleData)
+        snapshot.appendItems(fPersons, toSection: .f_persons)
+        snapshot.appendItems(interesting, toSection: .interestig)
         
         dataSource?.apply(snapshot, animatingDifferences: true)
         
@@ -77,10 +80,6 @@ class GalleryViewController: UIViewController {
 
 //MARK: - Setup UI ELements
 extension GalleryViewController {
-    
-    private func addSubviews() {
-        
-    }
     
     private func createNavigationBar() {
         let navigationBarApperance = UINavigationBar.appearance()
@@ -97,10 +96,11 @@ extension GalleryViewController {
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reusedId)
         
         collectionView.register(PaintingCollectionViewCell.self, forCellWithReuseIdentifier: PaintingCollectionViewCell.resuedId)
-        collectionView.register(FrPersonCollectionViewCell.self, forCellWithReuseIdentifier: FrPersonCollectionViewCell.resuedId)
-        collectionView.register(FrBattleDataCell.self, forCellWithReuseIdentifier: FrBattleDataCell.resuedId)
-        collectionView.register(RuPersonCollectionViewCell.self, forCellWithReuseIdentifier: RuPersonCollectionViewCell.resuedId)
         collectionView.register(RuBattleDataCell.self, forCellWithReuseIdentifier: RuBattleDataCell.resuedId)
+        collectionView.register(RuPersonCollectionViewCell.self, forCellWithReuseIdentifier: RuPersonCollectionViewCell.resuedId)
+        collectionView.register(FrBattleDataCell.self, forCellWithReuseIdentifier: FrBattleDataCell.resuedId)
+        collectionView.register(FrPersonCollectionViewCell.self, forCellWithReuseIdentifier: FrPersonCollectionViewCell.resuedId)
+        collectionView.register(InterestingCollectionViewCell.self, forCellWithReuseIdentifier: InterestingCollectionViewCell.resuedId)
     
     }
     
@@ -134,8 +134,8 @@ extension GalleryViewController {
             case .paintings:
                 return self.configure(cellType: PaintingCollectionViewCell.self, with: gallery, for: indexPath)
                 
-            case .f_persons:
-                return self.configure(cellType: FrPersonCollectionViewCell.self, with: gallery, for: indexPath)
+            case .ruBattleData:
+                return self.configure(cellType: RuBattleDataCell.self, with: gallery, for: indexPath)
                 
             case .ru_persons:
                 return self.configure(cellType: RuPersonCollectionViewCell.self, with: gallery, for: indexPath)
@@ -143,9 +143,11 @@ extension GalleryViewController {
             case .frBattleData:
                 return self.configure(cellType: FrBattleDataCell.self, with: gallery, for: indexPath)
                 
-            case .ruBattleData:
-                return self.configure(cellType: RuBattleDataCell.self, with: gallery, for: indexPath)
+            case .f_persons:
+                return self.configure(cellType: FrPersonCollectionViewCell.self, with: gallery, for: indexPath)
                 
+            case .interestig:
+                return self.configure(cellType: InterestingCollectionViewCell.self, with: gallery, for: indexPath)
             }
         })
     
@@ -156,7 +158,7 @@ extension GalleryViewController {
             
             guard let section = Section(rawValue: indexPath.section) else { fatalError("🔴 Unknown section kind") }
                     
-            sectionHeader.configurate(text: section.description(), font: UIFont(name: "Avenir", size: 18), textColor: .link)
+            sectionHeader.configurate(text: section.description(), font: UIFont(name: "Avenir", size: 18), textColor: .white)
             
             return sectionHeader
         }
@@ -177,15 +179,16 @@ extension GalleryViewController {
             switch section {
             case .paintings:
                 return self.createPaintingsSection()
-            case .f_persons:
-                return self.createPersonsSection()
+            case .ruBattleData:
+                return self.createBattleData()
             case .ru_persons:
                 return self.createPersonsSection()
             case .frBattleData:
                 return self.createBattleData()
-            case .ruBattleData:
-                return self.createBattleData()
-            
+            case .f_persons:
+                return self.createPersonsSection()
+            case .interestig:
+                return self.createInterestingSection()
             }
             
         }
@@ -209,7 +212,7 @@ extension GalleryViewController {
         
         let section = NSCollectionLayoutSection(group: group)
         // отступы у секций
-        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 5, bottom: 0, trailing: 5)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
         // отсутпы между группами
         section.interGroupSpacing = 5
         // задать свойство прокручивания в горизонтальной прокрутке
@@ -234,9 +237,9 @@ extension GalleryViewController {
         
         
         let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 5
+        section.interGroupSpacing = 7
         // размеры отсутпов по бокам
-        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 5, bottom: 0, trailing: 5)
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 10, bottom: 0, trailing: 0)
         
         // header
         let sectionHeader = createSectionHeader()
@@ -250,31 +253,34 @@ extension GalleryViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .absolute(150))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets.trailing = 16
-        item.contentInsets.bottom = 16
+        item.contentInsets.trailing = 10
+        item.contentInsets.bottom = 10
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(500)), subitems: [item])
         //group.contentInsets = 16
         
         let section = NSCollectionLayoutSection(group: group)
         // отступы у секций
-        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 5, bottom: 0, trailing: 5)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 10, bottom: 0, trailing: 10)
         // отсутпы между группами
         section.interGroupSpacing = 5
         // задать свойство прокручивания в горизонтальной прокрутке
         section.orthogonalScrollingBehavior = .groupPaging
         
+        // header
+        let sectionHeader = createSectionHeader()
+        section.boundarySupplementaryItems = [sectionHeader]
         
         return section
     }
     
-    private func createPanoramaSection() -> NSCollectionLayoutSection {
+    private func createInterestingSection() -> NSCollectionLayoutSection {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(300), heightDimension: .absolute(200))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(300), heightDimension: .absolute(160))
         
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
@@ -283,7 +289,7 @@ extension GalleryViewController {
         section.interGroupSpacing = 5
         // размеры отсутпов по бокам
         section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 5, bottom: 0, trailing: 5)
-        
+        section.orthogonalScrollingBehavior = .continuous
         // header
         let sectionHeader = createSectionHeader()
         section.boundarySupplementaryItems = [sectionHeader]
@@ -300,7 +306,7 @@ extension GalleryViewController {
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: sectionHeaderSize,
                                                                         elementKind: UICollectionView.elementKindSectionHeader,
                                                                         alignment: .top)
-        
+
         return sectionHeader
     }
     

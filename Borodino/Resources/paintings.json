@@ -2,40 +2,39 @@
 [
     {
         "id": 1,
-        "image": "pg1",
-        "title": "Наполеон I на Бородинских высотах",
-        "role": "Василий Васильевич Верещагин",
-        "year": "1897",
-        "emblem": "",
+        "image": "battle_episode1",
+        "title": "Эпизод I. Начало битвы",
         "overview": ""
     },
     {
         "id": 2,
-        "image": "pg2",
-        "title": " Кутузов на Бородинском поле",
-        "author": "Сергей Васильевич Герасимов",
-        "year": "1952"
+        "image": "battle_episode2",
+        "title": "Эпизод II. Багратионовы флеши",
+        "overview": ""
     },
     {
         "id": 3,
-        "image": "pg3",
-        "title": "Бородинское сражение.",
-        "author": "Louis Lejeune",
-        "year": "1822"
+        "image": "battle_episode3",
+        "title": "Эпизод III. Бой за Утицкий курган",
+        "overview": ""
     },
     {
         "id": 4,
-        "image": "pg4",
-        "title": "Бородинский бой. Иллюстрация к стихотворению М. Ю. Лермонтова «Бородино».",
-        "author": "В. Шевченко",
-        "year": "1970-е гг."
+        "image": "battle_episode4",
+        "title": "Эпизод IV. Рейд казаков Платова и кавалерии Уварова",
+        "overview": ""
     },
     {
         "id": 5,
-        "image": "pg5",
-        "title": "Лейб-гвардии Измайловский полк в Бородинском сражении.",
-        "author": "А. Коцебу",
-        "year": "Середина XIX в."
+        "image": "battle_episode5",
+        "title": "Эпизод V. Батарея Раевского",
+        "overview": ""
+    },
+    {
+        "id": 6,
+        "image": "battle_episode6",
+        "title": "Эпизод VI. Окончание битвы",
+        "overview": ""
     }
 ]
 

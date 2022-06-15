@@ -20,7 +20,7 @@
 		D01D6AAB285705D100FBF165 /* places.json in Resources */ = {isa = PBXBuildFile; fileRef = D01D6AAA285705D100FBF165 /* places.json */; };
 		D01D6AAD285706A300FBF165 /* interesting.json in Resources */ = {isa = PBXBuildFile; fileRef = D01D6AAC285706A300FBF165 /* interesting.json */; };
 		D01D6AAF2857288300FBF165 /* ru_persons.json in Resources */ = {isa = PBXBuildFile; fileRef = D01D6AAE2857267000FBF165 /* ru_persons.json */; };
-		D01D6AB1285733D900FBF165 /* MPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D01D6AB0285733D900FBF165 /* MPerson.swift */; };
+		D02292772859F29400A865AA /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D02292762859F29400A865AA /* PlacesViewController.swift */; };
 		D059751B283E1EDB004A6EFB /* MKMapView Extrntion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D059751A283E1EDB004A6EFB /* MKMapView Extrntion.swift */; };
 		D059751D283E2594004A6EFB /* MonumentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D059751C283E2594004A6EFB /* MonumentLocation.swift */; };
 		D0651E5C283F5B6000CE23D9 /* mainData.geojson in Resources */ = {isa = PBXBuildFile; fileRef = D0651E5B283F5B6000CE23D9 /* mainData.geojson */; };
@@ -57,7 +57,7 @@
 		D01D6AAA285705D100FBF165 /* places.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = places.json; sourceTree = "<group>"; };
 		D01D6AAC285706A300FBF165 /* interesting.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = interesting.json; sourceTree = "<group>"; };
 		D01D6AAE2857267000FBF165 /* ru_persons.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ru_persons.json; sourceTree = "<group>"; };
-		D01D6AB0285733D900FBF165 /* MPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MPerson.swift; sourceTree = "<group>"; };
+		D02292762859F29400A865AA /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		D059751A283E1EDB004A6EFB /* MKMapView Extrntion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView Extrntion.swift"; sourceTree = "<group>"; };
 		D059751C283E2594004A6EFB /* MonumentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonumentLocation.swift; sourceTree = "<group>"; };
 		D0651E5B283F5B6000CE23D9 /* mainData.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = mainData.geojson; sourceTree = "<group>"; };
@@ -99,7 +99,6 @@
 			isa = PBXGroup;
 			children = (
 				D0A12C172853682C00399BC3 /* MGallery.swift */,
-				D01D6AB0285733D900FBF165 /* MPerson.swift */,
 				D0D41078283BA48900479D4A /* MonumentModel.swift */,
 				D01D6AA52856F48B00FBF165 /* PersonModel.swift */,
 				D0A12C0528527BE700399BC3 /* PaintingModel.swift */,
@@ -148,9 +147,9 @@
 			isa = PBXGroup;
 			children = (
 				D0EFAFB32829024A002537B4 /* Other */,
-				D0EFAFB428290273002537B4 /* Controllers */,
-				D0EFAFB5282902A1002537B4 /* Views */,
 				D0B5E0F72823D397002BAD17 /* Models */,
+				D0EFAFB5282902A1002537B4 /* Views */,
+				D0EFAFB428290273002537B4 /* Controllers */,
 				D0E0024C2822D26E002B219F /* Utils */,
 				D0D41072283B9E9400479D4A /* Resources */,
 				D0E002422822B78C002B219F /* Info.plist */,
@@ -183,6 +182,7 @@
 			children = (
 				D0EFAFB6282902F5002537B4 /* MainTabBarController.swift */,
 				D0A12C072853230800399BC3 /* GalleryViewController.swift */,
+				D02292762859F29400A865AA /* PlacesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -296,10 +296,10 @@
 				D0E0024B2822D261002B219F /* UIColor Extention.swift in Sources */,
 				D0D41077283BA24300479D4A /* Bundle-Decodable.swift in Sources */,
 				D0A12C1228535B0400399BC3 /* FrPersonCollectionViewCell.swift in Sources */,
-				D01D6AB1285733D900FBF165 /* MPerson.swift in Sources */,
 				D0A12C1628535B2A00399BC3 /* InterestingCollectionViewCell.swift in Sources */,
 				D014625328587605005BCDED /* FrBattleDataCell.swift in Sources */,
 				D014624F28586009005BCDED /* RuPersonCollectionViewCell.swift in Sources */,
+				D02292772859F29400A865AA /* PlacesViewController.swift in Sources */,
 				D0146251285862F1005BCDED /* SectionHeader.swift in Sources */,
 				D0E002352822B782002B219F /* AppDelegate.swift in Sources */,
 				D0E002372822B782002B219F /* SceneDelegate.swift in Sources */,
