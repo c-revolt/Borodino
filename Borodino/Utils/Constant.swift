@@ -31,6 +31,15 @@ struct K {
     
     static let sectionHeader = "SectionHeader"
     
+    
+    static let monumentCollectionViewIDCell = "MonumentCollectionViewCell"
+    static let imageMonumentDetailCollectionViewIDCell = "ImageMonumentDetailCollectionViewCell"
+    static let titleMonumentDetailCollectionViewIDCell = "TitleMonumentDetailCollectionViewCell"
+    static let addressMonumentDetailCollectionViewIDCell = "AddressMonumentDetailCollectionViewCell"
+    static let sourceMonumentDetailCollectionViewIDCell = "SourceMonumentDetailCollectionViewCell"
+    static let overviewMonumentDetailCollectionViewIDCell = "OverviewMonumentDetailCollectionViewCell"
+    static let mapMonumentDetailCollectionViewIDCell = "MapMonumentDetailCollectionViewCell"
+
     struct NavControllerTitle {
         static let gallery_title = "Галерея"
         static let map_title = "Карта"

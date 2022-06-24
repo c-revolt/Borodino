@@ -15,7 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        //setupNavigationBar()
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .topAttached, barMetrics: .default)
+//        UINavigationBar.appearance().shadowImage = UIImage()
+        //UINavigationBar.appearance().tintColor = .white
+//        UINavigationBar.appearance().barTintColor = .systemBackground
+//        UINavigationBar.appearance().isTranslucent = false
+//        UINavigationBar.appearance().clipsToBounds = false
+//        UINavigationBar.appearance().backgroundColor = .systemBackground
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font : (UIFont(name: "Avenir", size: 22))!, NSAttributedString.Key.foregroundColor: UIColor.white.cgColor]
         
         return true
     }

@@ -1,5 +1,5 @@
 //
-//  RuBattleDataCell.swift
+//  FrBattleDataCell.swift
 //  Borodino
 //
 //  Created by Александр Прайд on 14.06.2022.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class RuBattleDataCell: UICollectionViewCell, ConfiguringCell {
-    
-    static var resuedId = K.ruBattleIIDCell
+class FrBattleDataCell: UICollectionViewCell, ConfiguringCell {
+
+    static var resuedId = K.frBattleIDCell
 
     private let title: UILabel = {
         let label = UILabel()
@@ -24,7 +24,7 @@ class RuBattleDataCell: UICollectionViewCell, ConfiguringCell {
     private let countTitleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: "Avenir", size: 14)
-        label.textColor = .russianGreen()
+        label.textColor = #colorLiteral(red: 0.3662570715, green: 0.5401275754, blue: 0.8284265399, alpha: 1)
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = .boldSystemFont(ofSize: 14)
@@ -32,21 +32,13 @@ class RuBattleDataCell: UICollectionViewCell, ConfiguringCell {
         return label
     }()
     
-    private let ruIcon: UIImageView = {
+    private let frIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 5
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
-    }()
-    
-    private let gradientView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemBlue
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
     }()
     
     override init(frame: CGRect) {
@@ -58,7 +50,7 @@ class RuBattleDataCell: UICollectionViewCell, ConfiguringCell {
         backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         layer.cornerRadius = 7
         layer.borderWidth = 1
-        layer.borderColor = UIColor.russianGreen().cgColor
+        layer.borderColor = #colorLiteral(red: 0.3662570715, green: 0.5401275754, blue: 0.8284265399, alpha: 1)
     }
     
     required init?(coder: NSCoder) {
@@ -68,17 +60,18 @@ class RuBattleDataCell: UICollectionViewCell, ConfiguringCell {
     
     
     func configure(with value: MGallery) {
-        ruIcon.image = UIImage(named: value.image ?? "photo")
+        frIcon.image = UIImage(named: value.image ?? "photo")
         title.text = value.title
         countTitleLabel.text = value.overview
     }
     
 }
+
 // MARK: - Setup UI Elements
-extension RuBattleDataCell {
+extension FrBattleDataCell {
     
     private func addSubviews() {
-        addSubview(ruIcon)
+        addSubview(frIcon)
         addSubview(title)
         addSubview(countTitleLabel)
         
@@ -87,14 +80,14 @@ extension RuBattleDataCell {
     private func applyConstraints() {
         
         NSLayoutConstraint.activate([
-            ruIcon.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
-            ruIcon.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            ruIcon.heightAnchor.constraint(equalToConstant: 25),
-            ruIcon.widthAnchor.constraint(equalToConstant: 35)
+            frIcon.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            frIcon.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            frIcon.heightAnchor.constraint(equalToConstant: 25),
+            frIcon.widthAnchor.constraint(equalToConstant: 35)
         ])
         
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: ruIcon.bottomAnchor, constant: 8),
+            title.topAnchor.constraint(equalTo: frIcon.bottomAnchor, constant: 8),
             title.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 2),
             title.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -2)
             
@@ -107,6 +100,8 @@ extension RuBattleDataCell {
             countTitleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
             countTitleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
+        
+        
         
     }
 }

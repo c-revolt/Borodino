@@ -9,7 +9,7 @@ import UIKit
 
 class GalleryViewController: UIViewController {
     
-    enum Section: Int, CaseIterable {
+    private enum Section: Int, CaseIterable {
         case paintings = 0
         case ruBattleData = 1     // f_persons
         case ru_persons = 2  // frBattleData
@@ -38,7 +38,9 @@ class GalleryViewController: UIViewController {
     }
     
     var collectionView: UICollectionView! = nil
-    var dataSource: UICollectionViewDiffableDataSource<Section, MGallery>?
+    private var dataSource: UICollectionViewDiffableDataSource<Section, MGallery>?
+    var navigationView = UIView()
+    var scrollView = UIScrollView()
     
     let paintings = Bundle.main.decode([MGallery].self, from: "paintings.json")
     let fPersons = Bundle.main.decode([MGallery].self, from: "f_persons.json")
@@ -52,12 +54,21 @@ class GalleryViewController: UIViewController {
         super.viewDidLoad()
         
         createNavigationBar()
-        
         setupCollectionView()
         
         createDataSource()
         reloadData()
+        
+        
+        collectionView.contentInsetAdjustmentBehavior = .never
     }
+    
+    
+    override func viewDidLayoutSubviews() {
+        collectionView.frame = view.bounds
+        scrollView.frame = view.bounds
+    }
+    
     
     private func reloadData() {
         
@@ -82,10 +93,27 @@ class GalleryViewController: UIViewController {
 extension GalleryViewController {
     
     private func createNavigationBar() {
-        let navigationBarApperance = UINavigationBar.appearance()
-        navigationBarApperance.backgroundColor = .systemBackground
-
+        let navigationBar = self.navigationController?.navigationBar
+        navigationBar?.setBackgroundImage(UIImage(), for: .default)
+            navigationBar?.shadowImage = UIImage()
+        navigationBar?.backgroundColor = .clear
+        //title = "Бородино"
+        
     }
+
+
+
+//    func scrollViewDidScroll(scrollView: UIScrollView) {
+//        let offset : CGFloat = scrollView.contentOffset.y
+//        if (offset > 50) {
+//            let alpha : CGFloat = min(CGFloat(1), CGFloat(1) - (CGFloat(50) + (navigationView.frame.height) - offset) / (navigationView.frame.height))
+//            navigationView.alpha = CGFloat(alpha)
+//        } else {
+//            navigationView.alpha = 0.0
+//        }
+//
+//    }
+    
     
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
@@ -95,7 +123,7 @@ extension GalleryViewController {
         
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reusedId)
         
-        collectionView.register(PaintingCollectionViewCell.self, forCellWithReuseIdentifier: PaintingCollectionViewCell.resuedId)
+        collectionView.register(BattleEpisodeCollectionViewCell.self, forCellWithReuseIdentifier: BattleEpisodeCollectionViewCell.resuedId)
         collectionView.register(RuBattleDataCell.self, forCellWithReuseIdentifier: RuBattleDataCell.resuedId)
         collectionView.register(RuPersonCollectionViewCell.self, forCellWithReuseIdentifier: RuPersonCollectionViewCell.resuedId)
         collectionView.register(FrBattleDataCell.self, forCellWithReuseIdentifier: FrBattleDataCell.resuedId)
@@ -132,7 +160,8 @@ extension GalleryViewController {
             switch section {
                 
             case .paintings:
-                return self.configure(cellType: PaintingCollectionViewCell.self, with: gallery, for: indexPath)
+                
+                return self.configure(cellType: BattleEpisodeCollectionViewCell.self, with: gallery, for: indexPath)
                 
             case .ruBattleData:
                 return self.configure(cellType: RuBattleDataCell.self, with: gallery, for: indexPath)
@@ -206,21 +235,21 @@ extension GalleryViewController {
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(300))
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
         // отступы у секций
-        section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         // отсутпы между группами
         section.interGroupSpacing = 5
         // задать свойство прокручивания в горизонтальной прокрутке
         section.orthogonalScrollingBehavior = .continuous
         
         // header
-        let sectionHeader = createSectionHeader()
-        section.boundarySupplementaryItems = [sectionHeader]
+//        let sectionHeader = createSectionHeader()
+//        section.boundarySupplementaryItems = [sectionHeader]
         
         return section
         
@@ -239,7 +268,7 @@ extension GalleryViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 7
         // размеры отсутпов по бокам
-        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 10, bottom: 0, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 0, bottom: 0, trailing: 0)
         
         // header
         let sectionHeader = createSectionHeader()
@@ -280,7 +309,7 @@ extension GalleryViewController {
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(300), heightDimension: .absolute(160))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(160))
         
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
@@ -288,7 +317,7 @@ extension GalleryViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 5
         // размеры отсутпов по бокам
-        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 5, bottom: 0, trailing: 5)
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 0, bottom: 100, trailing: 0)
         section.orthogonalScrollingBehavior = .continuous
         // header
         let sectionHeader = createSectionHeader()
@@ -312,6 +341,64 @@ extension GalleryViewController {
     
 }
 
+extension GalleryViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        
+        let defaultOffSet = view.safeAreaInsets.top
+        let offSet = scrollView.contentOffset.y + defaultOffSet
+        
+        navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offSet))
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension GalleryViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //guard let gallery = self.dataSource?.itemIdentifier(for: indexPath) else { return }
+        guard let section = Section(rawValue: indexPath.section) else { return }
+        
+        switch section {
+        case .paintings:
+            let battleDetailVC = BattleDetailViewController()
+            //battleDetailVC.delegate = self
+            self.present(battleDetailVC, animated: true, completion: nil)
+        case .ruBattleData:
+            print("123")
+        case .ru_persons:
+            print("1,2,3")
+        case .frBattleData:
+            print("123")
+        case .f_persons:
+            print("123")
+        case .interestig:
+            print("123")
+        }
+    }
+    
+}
+
+extension GalleryViewController: BattleEpisodeCollectionViewCellDelegate {
+    
+    func battleEpisodeCollectionViewCellDidTappedCell(_ cell: BattleEpisodeCollectionViewCell, viewModel: BattleDetailViewModel) {
+//        DispatchQueue.main.async { [weak self]
+//            let viewController = BattleDetailViewController()
+//            
+//        }
+    }
+    
+    
+    
+}
 
 
-
+//switch section {
+//case .waitingChats:
+//    let chatRequestVC = ChatRequestViewController(chat: chat)
+//    chatRequestVC.delegate = self
+//    self.present(chatRequestVC, animated: true, completion: nil)
+//case .activeChats:
+//    print(indexPath)
+//    let chatsVC = ChatsViewController(user: currentUser, chat: chat)
+//    navigationController?.pushViewController(chatsVC, animated: true)

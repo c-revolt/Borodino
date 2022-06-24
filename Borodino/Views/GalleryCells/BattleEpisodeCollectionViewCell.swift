@@ -12,11 +12,18 @@ protocol ConfiguringCell {
     func configure(with value: MGallery)
 }
 
-class PaintingCollectionViewCell: UICollectionViewCell, ConfiguringCell {
+protocol BattleEpisodeCollectionViewCellDelegate: AnyObject {
+    
+    func battleEpisodeCollectionViewCellDidTappedCell(_ cell: BattleEpisodeCollectionViewCell, viewModel: BattleDetailViewModel)
+}
+
+class BattleEpisodeCollectionViewCell: UICollectionViewCell, ConfiguringCell {
     
     static var resuedId = K.paintingIdCell
     
     static let identifire = K.SectionTitles.paintings
+    
+    weak var delegate: BattleEpisodeCollectionViewCellDelegate?
     
     private let paintingImageView: UIImageView = {
         let imageView = UIImageView()
@@ -45,6 +52,7 @@ class PaintingCollectionViewCell: UICollectionViewCell, ConfiguringCell {
         button.setTitleColor(UIColor.black, for: .normal)
         button.layer.cornerRadius = 7
         button.translatesAutoresizingMaskIntoConstraints = false
+        
         return button
     }()
     
@@ -54,6 +62,8 @@ class PaintingCollectionViewCell: UICollectionViewCell, ConfiguringCell {
         addSubviews()
         
         applyConstraints()
+        
+        //readButton.addTarget(self, action: #selector(readButtonPressed), for: .touchUpInside)
     }
     
     required init?(coder: NSCoder) {
@@ -66,15 +76,23 @@ class PaintingCollectionViewCell: UICollectionViewCell, ConfiguringCell {
         paintingImageView.frame = contentView.bounds
     }
     
+//    @objc func readButtonPressed() {
+//        DispatchQueue.main.async { [weak self] in
+//            let viewController = BattleDetailViewController()
+//            viewController.configure(with:  viewModel)
+//            self?.navigationController?.pushViewController(viewController, animated: true)
+//        }
+//        
+//    }
+    
     func configure(with value: MGallery) {
         paintingImageView.image = UIImage(named: value.image ?? "photo")
         paintingTitleLabel.text = value.title
     }
-    
 }
 
 // MARK: - Setup UI Elements
-extension PaintingCollectionViewCell {
+extension BattleEpisodeCollectionViewCell {
     
     private func addSubviews() {
         contentView.addSubview(paintingImageView)
