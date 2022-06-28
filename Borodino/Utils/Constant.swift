@@ -39,6 +39,34 @@ struct K {
     static let sourceMonumentDetailCollectionViewIDCell = "SourceMonumentDetailCollectionViewCell"
     static let overviewMonumentDetailCollectionViewIDCell = "OverviewMonumentDetailCollectionViewCell"
     static let mapMonumentDetailCollectionViewIDCell = "MapMonumentDetailCollectionViewCell"
+    
+    struct Person {
+        static let portraitReusedId = "PersonPortraitTableViewCell"
+        static let nameReusedId = "PersonNameTableViewCell"
+        static let datesReusedId = "PersonDatesTableViewCell"
+        static let emblemReusedId = "PersonEmblemTableViewCell"
+        static let overviewReusedId = "PersonOverviewTableViewCell"
+    }
+    
+    struct Battle {
+        static let imageReusedID = "BattleImageTableViewCell"
+        static let titleReusedID = "BattleTitleTableViewCell"
+        static let overviewReusedID = "BattleOverviewTableViewCell"
+        static let placemarkReusedID = "BattlePlacemarkTableViewCell"
+        static let mapReusedID = "BattleMapTableViewCell"
+    }
+    
+    struct Place {
+        static let imageReusedID = "PlaceImageTableViewCell"
+        static let titleReusedID = "PlaceTitleTableViewCell"
+        static let addressRusedID = "PlaceAddressTableViewCell"
+        static let headerID = "PlaceHeaderTableViewCell"
+        static let overviewReusedID = "PlaceOverviewTableViewCell"
+        static let bottomHeaderReusedID = "PlaceBottomHeaderTableViewCell"
+        static let mapReusedID = "PlaceMapTableViewCell"
+    }
+    
+    
 
     struct NavControllerTitle {
         static let gallery_title = "Галерея"

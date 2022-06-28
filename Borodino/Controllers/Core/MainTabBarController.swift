@@ -24,6 +24,7 @@ class MainTabBarController: UITabBarController {
         
         let galleryNavigationContoller = UINavigationController(rootViewController: galleryViewController)
         let memorialsNavigationController = UINavigationController(rootViewController: memorialsViewController)
+        let placesNavigationController = UINavigationController(rootViewController: placesViewController)
         
         
         galleryNavigationContoller.tabBarItem = UITabBarItem(title: K.NavControllerTitle.gallery_title, image: UIImage(systemName: "building.columns") , tag: 1)
@@ -31,7 +32,7 @@ class MainTabBarController: UITabBarController {
         placesViewController.tabBarItem = UITabBarItem(title: "Места", image: UIImage(systemName: "signpost.right") , tag: 3)
     
         
-        setViewControllers([galleryNavigationContoller, memorialsNavigationController, placesViewController], animated: true)
+        setViewControllers([galleryNavigationContoller, memorialsNavigationController, placesNavigationController], animated: true)
         
         tabBar.tintColor = .white
         

@@ -9,9 +9,11 @@ import UIKit
 
 class MonumentTableViewController: UIViewController {
 
-    private var gallery: [MGallery] = [MGallery]()
-    let monumentsJSONData = Bundle.main.decode([MGallery].self, from: "monuments.json")
+    private var monuments: [MMonument] = [MMonument]()
+    let monumentsJSONData = Bundle.main.decode([MMonument].self, from: "monumentsData.json")
     private var timer = Timer()
+    private var searching = false
+    private var searchingMonument = [MMonument]()
     
     private let tableView: UITableView = {
         let table = UITableView()
@@ -31,7 +33,7 @@ class MonumentTableViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        gallery = monumentsJSONData
+        monuments = monumentsJSONData
         
         setupNavigationBar()
         setupSearchBar()
@@ -75,24 +77,31 @@ class MonumentTableViewController: UIViewController {
 extension MonumentTableViewController:  UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return gallery.count
+        if searching {
+            return searchingMonument.count
+        } else {
+            return monuments.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let gallery = gallery[indexPath.row]
+        let monuments = monuments[indexPath.row]
+        let searchingMonument = monuments
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MonumentTableViewCell.reusedId, for: indexPath) as? MonumentTableViewCell else {
             return UITableViewCell()
         }
         
-        cell.configure(with: MonumentViewModel(image: gallery.image ?? "photo", title: gallery.title, years: gallery.years, emblem: gallery.emblem, overview: gallery.overview))
-//
-//        cell.nameLabel.text = cafes[indexPath.row].name
-//        cell.locationLabel.text = cafes[indexPath.row].location
-//        cell.typeLabel.text = cafes[indexPath.row].type
-//        cell.thumbnailImageView.image = UIImage(named: cafes[indexPath.row].image)
+        if searching {
+            cell.configure(with: MonumentViewModel(id: nil, title: searchingMonument.title, image: searchingMonument.image ?? "photo", source: searchingMonument.source, address: searchingMonument.address, overview: nil))
+        } else {
+            cell.configure(with: MonumentViewModel(id: nil, title: monuments.title, image: monuments.image ?? "photo", source: monuments.source, address: monuments.address, overview: nil))
+        }
         
+        
+        
+        cell.selectionStyle = .none
         
         return cell
     }
@@ -102,12 +111,57 @@ extension MonumentTableViewController:  UITableViewDelegate, UITableViewDataSour
         return 90
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let monument = monuments[indexPath.row]
+        
+            
+        let detailVC = TableMonumentViewController()
+        detailVC.monumentDetail = monument
+        detailVC.modalTransitionStyle = .coverVertical
+        detailVC.modalPresentationStyle = .fullScreen
+        //navigationController?.present(detailVC.self, animated: true)
+        navigationController?.pushViewController(detailVC, animated: true)
+
+        
+    }
     
 }
 
 extension MonumentTableViewController: UISearchBarDelegate {
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-             print(searchText)
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//             print(searchText)
+//    }
+    
+    func updateResults(for searchController: UISearchController) {
+        guard let searchText = searchController.searchBar.text else { return }
+        
+        if !searchText.isEmpty {
+            searching = true
+            searchingMonument.removeAll()
+            
+            for monument in monuments {
+                if ((monument.title?.lowercased().contains(searchText.lowercased())) != nil) {
+                    searchingMonument.append(monument)
+                }
+            }
+            
+        } else {
+            searching = false
+            searchingMonument.removeAll()
+            searchingMonument = monuments
+        }
+        
+        tableView.reloadData()
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        searchingMonument.removeAll()
+        
+        tableView.reloadData()
+    }
+    
 }
+

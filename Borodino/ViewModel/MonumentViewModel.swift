@@ -9,9 +9,11 @@ import UIKit
 
 struct MonumentViewModel {
     
-    var image: String?
+    var id: String?
     var title: String?
-    var years: String?
-    var emblem: String?
+    var image: String?
+    var source: String?
+    var address: String?
     var overview: String?
 }
+

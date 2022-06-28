@@ -11,10 +11,10 @@ class GalleryViewController: UIViewController {
     
     private enum Section: Int, CaseIterable {
         case paintings = 0
-        case ruBattleData = 1     // f_persons
-        case ru_persons = 2  // frBattleData
-        case frBattleData = 3    // ru_persons
-        case f_persons = 4  // ruBattleData
+        case ruBattleData = 1
+        case ru_persons = 2
+        case frBattleData = 3
+        case f_persons = 4
         case interestig = 5
         
         func description() -> String {
@@ -49,9 +49,13 @@ class GalleryViewController: UIViewController {
     let ruBattle = Bundle.main.decode([MGallery].self, from: "ru_battleData.json")
     let interesting = Bundle.main.decode([MGallery].self, from: "interesting.json")
 
+    var persons: [MGallery] = [MGallery]()
+    var battle: [MGallery] = [MGallery]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        battle = paintings
         
         createNavigationBar()
         setupCollectionView()
@@ -59,6 +63,7 @@ class GalleryViewController: UIViewController {
         createDataSource()
         reloadData()
         
+        collectionView.delegate = self
         
         collectionView.contentInsetAdjustmentBehavior = .never
     }
@@ -68,7 +73,6 @@ class GalleryViewController: UIViewController {
         collectionView.frame = view.bounds
         scrollView.frame = view.bounds
     }
-    
     
     private func reloadData() {
         
@@ -164,6 +168,7 @@ extension GalleryViewController {
                 return self.configure(cellType: BattleEpisodeCollectionViewCell.self, with: gallery, for: indexPath)
                 
             case .ruBattleData:
+                
                 return self.configure(cellType: RuBattleDataCell.self, with: gallery, for: indexPath)
                 
             case .ru_persons:
@@ -173,6 +178,7 @@ extension GalleryViewController {
                 return self.configure(cellType: FrBattleDataCell.self, with: gallery, for: indexPath)
                 
             case .f_persons:
+                
                 return self.configure(cellType: FrPersonCollectionViewCell.self, with: gallery, for: indexPath)
                 
             case .interestig:
@@ -268,7 +274,7 @@ extension GalleryViewController {
         let section = NSCollectionLayoutSection(group: group)
         section.interGroupSpacing = 7
         // размеры отсутпов по бокам
-        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 0, bottom: 0, trailing: 0)
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 10, bottom: 0, trailing: 10)
         
         // header
         let sectionHeader = createSectionHeader()
@@ -292,7 +298,7 @@ extension GalleryViewController {
         // отступы у секций
         section.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 10, bottom: 0, trailing: 10)
         // отсутпы между группами
-        section.interGroupSpacing = 5
+        section.interGroupSpacing = 2
         // задать свойство прокручивания в горизонтальной прокрутке
         section.orthogonalScrollingBehavior = .groupPaging
         
@@ -309,7 +315,7 @@ extension GalleryViewController {
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(160))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(190))
         
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
@@ -356,49 +362,54 @@ extension GalleryViewController: UIScrollViewDelegate {
 extension GalleryViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //guard let gallery = self.dataSource?.itemIdentifier(for: indexPath) else { return }
+        
+        //let person = persons[indexPath.row]
+        let battleArray = battle[indexPath.row]
+        
         guard let section = Section(rawValue: indexPath.section) else { return }
         
         switch section {
+            
         case .paintings:
+            
+            
             let battleDetailVC = BattleDetailViewController()
-            //battleDetailVC.delegate = self
-            self.present(battleDetailVC, animated: true, completion: nil)
+            battleDetailVC.battleDetail = battleArray
+            battleDetailVC.modalTransitionStyle = .coverVertical
+            //battleDetailVC.modalPresentationStyle = .fullScreen
+            //navigationController?.present(detailVC.self, animated: true)
+            navigationController?.pushViewController(battleDetailVC, animated: true)
+            
         case .ruBattleData:
             print("123")
+            
         case .ru_persons:
-            print("1,2,3")
+            print("123")
+//            persons = ruPersons
+//            let person = persons[indexPath.row]
+//
+//            let detailVC = PersonDetailViewController()
+//            detailVC.personsDetail = person
+//            detailVC.modalTransitionStyle = .coverVertical
+//            detailVC.modalPresentationStyle = .fullScreen
+//            //navigationController?.present(detailVC.self, animated: true)
+//            navigationController?.pushViewController(detailVC, animated: true)
         case .frBattleData:
             print("123")
         case .f_persons:
-            print("123")
+            
+            print("1213")
+//            let detailVC = PersonDetailViewController()
+//            detailVC.personsDetail = person
+//            detailVC.modalTransitionStyle = .coverVertical
+//            detailVC.modalPresentationStyle = .fullScreen
+//            //navigationController?.present(detailVC.self, animated: true)
+//            navigationController?.pushViewController(detailVC, animated: true)
         case .interestig:
             print("123")
         }
     }
     
+
 }
 
-extension GalleryViewController: BattleEpisodeCollectionViewCellDelegate {
-    
-    func battleEpisodeCollectionViewCellDidTappedCell(_ cell: BattleEpisodeCollectionViewCell, viewModel: BattleDetailViewModel) {
-//        DispatchQueue.main.async { [weak self]
-//            let viewController = BattleDetailViewController()
-//            
-//        }
-    }
-    
-    
-    
-}
-
-
-//switch section {
-//case .waitingChats:
-//    let chatRequestVC = ChatRequestViewController(chat: chat)
-//    chatRequestVC.delegate = self
-//    self.present(chatRequestVC, animated: true, completion: nil)
-//case .activeChats:
-//    print(indexPath)
-//    let chatsVC = ChatsViewController(user: currentUser, chat: chat)
-//    navigationController?.pushViewController(chatsVC, animated: true)

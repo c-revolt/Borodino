@@ -63,6 +63,7 @@ class BattleEpisodeCollectionViewCell: UICollectionViewCell, ConfiguringCell {
         
         applyConstraints()
         
+        
         //readButton.addTarget(self, action: #selector(readButtonPressed), for: .touchUpInside)
     }
     

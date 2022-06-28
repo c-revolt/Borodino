@@ -16,6 +16,6 @@ struct MMonument: Decodable, Hashable {
     var address: String?
     var source: String?
     var overview: String?
-    var coord: [Double]?
+    //var coord: [Double]?
     
 }
