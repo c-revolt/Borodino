@@ -13,5 +13,9 @@ struct MBattle: Decodable, Hashable {
     var image: String?
     var title: String?
     var overview: String?
-    //var coord: Double?
+    var geometria: Geometria?
+}
+
+struct Geometria: Decodable, Hashable {
+    var coord: [Double]?
 }

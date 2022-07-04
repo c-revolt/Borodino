@@ -16,7 +16,7 @@ class PlacesDetailViewController: UIViewController {
         let table = UITableView()
         table.backgroundColor = .systemBackground
         table.translatesAutoresizingMaskIntoConstraints = false
-        
+        table.separatorStyle = .none
         
         table.register(PlaceImageTableViewCell.self, forCellReuseIdentifier: PlaceImageTableViewCell.reusedId)
         table.register(PlaceTitleTableViewCell.self, forCellReuseIdentifier: PlaceTitleTableViewCell.reusedId)
@@ -86,6 +86,7 @@ extension PlacesDetailViewController: UITableViewDelegate, UITableViewDataSource
             }
             cell.placeImageView.image = UIImage(named: placeDetail.image ?? "photo")
             cell.selectionStyle = .none
+            
             return cell
             
         case 1:
@@ -93,6 +94,8 @@ extension PlacesDetailViewController: UITableViewDelegate, UITableViewDataSource
                 return UITableViewCell()
             }
             cell.mainTitleLabel.text = placeDetail.title
+            
+            cell.selectionStyle = .none
             return cell
             
         case 2:
@@ -100,12 +103,16 @@ extension PlacesDetailViewController: UITableViewDelegate, UITableViewDataSource
                 return UITableViewCell()
             }
             cell.addressLabel.text = placeDetail.address
+            
+            cell.selectionStyle = .none
             return cell
             
         case 3:
             guard let cell = placeTableView.dequeueReusableCell(withIdentifier: PlaceHeaderTableViewCell.reusedId, for: indexPath) as? PlaceHeaderTableViewCell else {
                 return UITableViewCell()
             }
+            
+            cell.selectionStyle = .none
             return cell
             
         case 4:
@@ -113,18 +120,25 @@ extension PlacesDetailViewController: UITableViewDelegate, UITableViewDataSource
                 return UITableViewCell()
             }
             cell.overviewLabel.text = placeDetail.overview
+            
+            cell.selectionStyle = .none
             return cell
             
         case 5:
             guard let cell = placeTableView.dequeueReusableCell(withIdentifier: PlaceBottomHeaderTableViewCell.reusedId, for: indexPath) as? PlaceBottomHeaderTableViewCell else {
                 return UITableViewCell()
             }
+            
+            cell.selectionStyle = .none
             return cell
             
         case 6:
             guard let cell = placeTableView.dequeueReusableCell(withIdentifier: PlaceMapTableViewCell.reusedId, for: indexPath) as? PlaceMapTableViewCell else {
                 return UITableViewCell()
             }
+            cell.configure(location: placeDetail.address ?? "")
+            
+            cell.selectionStyle = .none
             return cell
             
         default:

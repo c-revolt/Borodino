@@ -18,21 +18,22 @@ class MainTabBarController: UITabBarController {
     private func setupControllers() {
         
         let galleryViewController = GalleryViewController()
+        let monumentsViewController = MonumentTableViewController()
         let placesViewController = PlacesViewController()
-        let memorialsViewController = MonumentTableViewController()
+        
         
         
         let galleryNavigationContoller = UINavigationController(rootViewController: galleryViewController)
-        let memorialsNavigationController = UINavigationController(rootViewController: memorialsViewController)
         let placesNavigationController = UINavigationController(rootViewController: placesViewController)
+        let monumentsNavigationController = UINavigationController(rootViewController: monumentsViewController)
         
         
-        galleryNavigationContoller.tabBarItem = UITabBarItem(title: K.NavControllerTitle.gallery_title, image: UIImage(systemName: "building.columns") , tag: 1)
-        memorialsNavigationController.tabBarItem = UITabBarItem(title: "Памятники", image: UIImage(systemName: "rectangle.grid.2x2"), tag: 2)
-        placesViewController.tabBarItem = UITabBarItem(title: "Места", image: UIImage(systemName: "signpost.right") , tag: 3)
+        galleryNavigationContoller.tabBarItem = UITabBarItem(title: K.TabBarTitles.gallery, image: UIImage(systemName: "building.columns") , tag: 1)
+        monumentsNavigationController.tabBarItem = UITabBarItem(title: K.TabBarTitles.monuments, image: UIImage(systemName: "arrowtriangle.down"), tag: 2)
+        placesViewController.tabBarItem = UITabBarItem(title: K.TabBarTitles.places, image: UIImage(systemName: "signpost.right") , tag: 3)
     
         
-        setViewControllers([galleryNavigationContoller, memorialsNavigationController, placesNavigationController], animated: true)
+        setViewControllers([galleryNavigationContoller, monumentsNavigationController, placesNavigationController], animated: true)
         
         tabBar.tintColor = .white
         

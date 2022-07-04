@@ -40,9 +40,25 @@ struct K {
     static let overviewMonumentDetailCollectionViewIDCell = "OverviewMonumentDetailCollectionViewCell"
     static let mapMonumentDetailCollectionViewIDCell = "MapMonumentDetailCollectionViewCell"
     
+    struct TabBarTitles {
+        static let gallery = "Галерея"
+        static let monuments = "Монументы"
+        static let places = "Места"
+    }
+    
+    struct Gallery {
+        static let battleSectionTitle = "ХРОНОЛОГИЯ БИТВЫ"
+        static let russianSideSectionTitle = "Российская сторона"
+        static let russianCommandersSectionTitle = "Российские командующие"
+        static let frenchSideSectionTitle = "Французская сторона"
+        static let frenchCommandersSectionTitle = "Французские командующие"
+        static let interestingSectionTitle = "Интересное"
+    }
+    
     struct Person {
         static let portraitReusedId = "PersonPortraitTableViewCell"
         static let nameReusedId = "PersonNameTableViewCell"
+        static let roleReusedId = "PersonRoleTableViewCell"
         static let datesReusedId = "PersonDatesTableViewCell"
         static let emblemReusedId = "PersonEmblemTableViewCell"
         static let overviewReusedId = "PersonOverviewTableViewCell"

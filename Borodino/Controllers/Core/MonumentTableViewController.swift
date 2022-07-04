@@ -116,7 +116,7 @@ extension MonumentTableViewController:  UITableViewDelegate, UITableViewDataSour
         let monument = monuments[indexPath.row]
         
             
-        let detailVC = TableMonumentViewController()
+        let detailVC = MonumentViewController()
         detailVC.monumentDetail = monument
         detailVC.modalTransitionStyle = .coverVertical
         detailVC.modalPresentationStyle = .fullScreen
@@ -125,6 +125,8 @@ extension MonumentTableViewController:  UITableViewDelegate, UITableViewDataSour
 
         
     }
+    
+    
     
 }
 

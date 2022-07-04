@@ -15,9 +15,10 @@ class PersonDetailViewController: UIViewController {
         let table = UITableView()
         table.backgroundColor = .systemBackground
         table.translatesAutoresizingMaskIntoConstraints = false
-        
+        table.separatorStyle = .none
         table.register(PersonPortraitTableViewCell.self, forCellReuseIdentifier: PersonPortraitTableViewCell.reusedID)
         table.register(PersonNameTableViewCell.self, forCellReuseIdentifier: PersonNameTableViewCell.reusedID)
+        table.register(PersonRoleTableViewCell.self, forCellReuseIdentifier: PersonRoleTableViewCell.reusedID)
         table.register(PersonDatesTableViewCell.self, forCellReuseIdentifier: PersonDatesTableViewCell.reusedID)
         table.register(PersonEmblemTableViewCell.self, forCellReuseIdentifier: PersonEmblemTableViewCell.reusedID)
         table.register(PersonOverviewTableViewCell.self, forCellReuseIdentifier: PersonOverviewTableViewCell.reusedID)
@@ -72,7 +73,7 @@ extension PersonDetailViewController {
 extension PersonDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,6 +84,7 @@ extension PersonDetailViewController: UITableViewDelegate, UITableViewDataSource
             guard let cell = personTableView.dequeueReusableCell(withIdentifier: K.Person.portraitReusedId, for: indexPath) as? PersonPortraitTableViewCell else {
                 return UITableViewCell()
             }
+            
             cell.selectionStyle = .none
             cell.portraitImageView.image = UIImage(named: personsDetail.image ?? "photo")
             return cell
@@ -91,30 +93,43 @@ extension PersonDetailViewController: UITableViewDelegate, UITableViewDataSource
             guard let cell = personTableView.dequeueReusableCell(withIdentifier: K.Person.nameReusedId, for: indexPath) as? PersonNameTableViewCell else {
                 return UITableViewCell()
             }
+            
             cell.selectionStyle = .none
             cell.personNameLabel.text = personsDetail.title
             return cell
             
         case 2:
+            guard let cell = personTableView.dequeueReusableCell(withIdentifier: K.Person.roleReusedId, for: indexPath) as? PersonRoleTableViewCell else {
+                return UITableViewCell()
+            }
+            
+            cell.selectionStyle = .none
+            cell.personRoleLabel.text = personsDetail.role
+            return cell
+            
+        case 3:
             guard let cell = personTableView.dequeueReusableCell(withIdentifier: K.Person.datesReusedId, for: indexPath) as? PersonDatesTableViewCell else {
                 return UITableViewCell()
             }
+            
             cell.selectionStyle = .none
             cell.personDatesLabel.text = personsDetail.years
             return cell
             
-        case 3:
+        case 4:
             guard let cell = personTableView.dequeueReusableCell(withIdentifier: K.Person.emblemReusedId, for: indexPath) as? PersonEmblemTableViewCell else {
                 return UITableViewCell()
             }
+            
             cell.selectionStyle = .none
             cell.emblemImageView.image = UIImage(named: personsDetail.emblem ?? "photo")
             return cell
             
-        case 4:
+        case 5:
             guard let cell = personTableView.dequeueReusableCell(withIdentifier: K.Person.overviewReusedId, for: indexPath) as? PersonOverviewTableViewCell else {
                 return UITableViewCell()
             }
+            
             cell.selectionStyle = .none
             cell.personOverviewLabel.text = personsDetail.overview
             return cell
@@ -133,10 +148,12 @@ extension PersonDetailViewController: UITableViewDelegate, UITableViewDataSource
         case 1:
             return UITableView.automaticDimension
         case 2:
-            return UITableView.automaticDimension
+            return 40
         case 3:
-            return 150
+            return UITableView.automaticDimension
         case 4:
+            return 150
+        case 5:
             return UITableView.automaticDimension
         default:
             return UITableView.automaticDimension

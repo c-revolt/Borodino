@@ -16,6 +16,11 @@ struct MGallery: Decodable, Hashable {
     var years: String?
     var emblem: String?
     var overview: String?
-    
+    var address: String?
+    var geometry: Geometry?
+}
+
+struct Geometry: Decodable, Hashable {
+    var coord: [Double]?
 }
 

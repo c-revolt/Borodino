@@ -15,8 +15,8 @@ class PlaceTitleTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .left
-        //label.font = UIFont(name: "Times New Romans", size: 22)
-        label.font = .boldSystemFont(ofSize: 25)
+        label.font = UIFont(name: "Times New Romans", size: 23)
+        label.font = .boldSystemFont(ofSize: 23)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

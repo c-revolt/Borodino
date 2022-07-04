@@ -10,29 +10,28 @@ import UIKit
 class GalleryViewController: UIViewController {
     
     private enum Section: Int, CaseIterable {
-        case paintings = 0
-        case ruBattleData = 1
-        case ru_persons = 2
-        case frBattleData = 3
-        case f_persons = 4
-        case interestig = 5
+        case battleEpisodeCase = 0
+        case russianSideCase = 1
+        case russianCommandersCase = 2
+        case frenchSideCase = 3
+        case frenchCommandersCase = 4
+        case interestigCase = 5
         
         func description() -> String {
             switch self {
                 
-            case .paintings:
-                return "ХРОНОЛОГИЯ БИТВЫ"
-            case .ruBattleData:
-                return "Российская сторона"
-            case .ru_persons:
-                return "Российские командующие"
-            case .frBattleData:
-                return "Французская сторона"
-            case .f_persons:
-                return "Французские командующие"
-
-            case .interestig:
-                return "Интересное"
+            case .battleEpisodeCase:
+                return K.Gallery.battleSectionTitle
+            case .russianSideCase:
+                return K.Gallery.russianSideSectionTitle
+            case .russianCommandersCase:
+                return K.Gallery.russianCommandersSectionTitle
+            case .frenchSideCase:
+                return K.Gallery.frenchSideSectionTitle
+            case .frenchCommandersCase:
+                return K.Gallery.frenchCommandersSectionTitle
+            case .interestigCase:
+                return K.Gallery.interestingSectionTitle
             }
         }
     }
@@ -42,20 +41,23 @@ class GalleryViewController: UIViewController {
     var navigationView = UIView()
     var scrollView = UIScrollView()
     
-    let paintings = Bundle.main.decode([MGallery].self, from: "paintings.json")
-    let fPersons = Bundle.main.decode([MGallery].self, from: "f_persons.json")
-    let frBattle = Bundle.main.decode([MGallery].self, from: "fr_battleData.json")
-    let ruPersons = Bundle.main.decode([MGallery].self, from: "ru_persons.json")
-    let ruBattle = Bundle.main.decode([MGallery].self, from: "ru_battleData.json")
-    let interesting = Bundle.main.decode([MGallery].self, from: "interesting.json")
+    let battleDataFromJSON = Bundle.main.decode([MGallery].self, from: "battleEpisodes.json")
+    let russianSideDataFromJSON = Bundle.main.decode([MGallery].self, from: "russianSideData.json")
+    let russianComandersDataFromJSON = Bundle.main.decode([MGallery].self, from: "russianCommandersData.json")
+    let frenchSideDataFromJSON = Bundle.main.decode([MGallery].self, from: "frenchSideData.json")
+    let frenchComandersDataFromJSON = Bundle.main.decode([MGallery].self, from: "frenchCommandersData.json")
+    let interestingDataFromJSON = Bundle.main.decode([MGallery].self, from: "interesting.json")
 
-    var persons: [MGallery] = [MGallery]()
+    var russianPersons: [MGallery] = [MGallery]()
+    var frenchPersons: [MGallery] = [MGallery]()
     var battle: [MGallery] = [MGallery]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        battle = paintings
+        battle = battleDataFromJSON
+        russianPersons = russianComandersDataFromJSON
+        frenchPersons = frenchComandersDataFromJSON
         
         createNavigationBar()
         setupCollectionView()
@@ -64,7 +66,6 @@ class GalleryViewController: UIViewController {
         reloadData()
         
         collectionView.delegate = self
-        
         collectionView.contentInsetAdjustmentBehavior = .never
     }
     
@@ -78,14 +79,14 @@ class GalleryViewController: UIViewController {
         
         var snapshot = NSDiffableDataSourceSnapshot<Section, MGallery>()
         
-        snapshot.appendSections([.paintings, .ruBattleData, .ru_persons, .frBattleData, .f_persons, .interestig])
+        snapshot.appendSections([.battleEpisodeCase, .russianSideCase, .russianCommandersCase, .frenchSideCase, .frenchCommandersCase, .interestigCase])
         
-        snapshot.appendItems(paintings, toSection: .paintings)
-        snapshot.appendItems(ruBattle, toSection: .ruBattleData)
-        snapshot.appendItems(ruPersons, toSection: .ru_persons)
-        snapshot.appendItems(frBattle, toSection: .frBattleData)
-        snapshot.appendItems(fPersons, toSection: .f_persons)
-        snapshot.appendItems(interesting, toSection: .interestig)
+        snapshot.appendItems(battleDataFromJSON, toSection: .battleEpisodeCase)
+        snapshot.appendItems(russianSideDataFromJSON, toSection: .russianSideCase)
+        snapshot.appendItems(russianComandersDataFromJSON, toSection: .russianCommandersCase)
+        snapshot.appendItems(frenchSideDataFromJSON, toSection: .frenchSideCase)
+        snapshot.appendItems(frenchComandersDataFromJSON, toSection: .frenchCommandersCase)
+        snapshot.appendItems(interestingDataFromJSON, toSection: .interestigCase)
         
         dataSource?.apply(snapshot, animatingDifferences: true)
         
@@ -101,7 +102,6 @@ extension GalleryViewController {
         navigationBar?.setBackgroundImage(UIImage(), for: .default)
             navigationBar?.shadowImage = UIImage()
         navigationBar?.backgroundColor = .clear
-        //title = "Бородино"
         
     }
 
@@ -138,7 +138,7 @@ extension GalleryViewController {
     
 }
 
-// MARK: Data Source
+// MARK: - Data Source
 extension GalleryViewController {
     
     private func configure<T: ConfiguringCell>(cellType: T.Type, with value: MGallery, for indexPath: IndexPath) -> T {
@@ -163,29 +163,30 @@ extension GalleryViewController {
             
             switch section {
                 
-            case .paintings:
+            case .battleEpisodeCase:
                 
                 return self.configure(cellType: BattleEpisodeCollectionViewCell.self, with: gallery, for: indexPath)
                 
-            case .ruBattleData:
+            case .russianSideCase:
                 
                 return self.configure(cellType: RuBattleDataCell.self, with: gallery, for: indexPath)
                 
-            case .ru_persons:
+            case .russianCommandersCase:
                 return self.configure(cellType: RuPersonCollectionViewCell.self, with: gallery, for: indexPath)
                 
-            case .frBattleData:
+            case .frenchSideCase:
                 return self.configure(cellType: FrBattleDataCell.self, with: gallery, for: indexPath)
                 
-            case .f_persons:
+            case .frenchCommandersCase:
                 
                 return self.configure(cellType: FrPersonCollectionViewCell.self, with: gallery, for: indexPath)
                 
-            case .interestig:
+            case .interestigCase:
                 return self.configure(cellType: InterestingCollectionViewCell.self, with: gallery, for: indexPath)
             }
         })
     
+        // создание Хэдера Секций
         dataSource?.supplementaryViewProvider = {
             collectionView, kind, indexPath in
             
@@ -193,7 +194,7 @@ extension GalleryViewController {
             
             guard let section = Section(rawValue: indexPath.section) else { fatalError("🔴 Unknown section kind") }
                     
-            sectionHeader.configurate(text: section.description(), font: UIFont(name: "Avenir", size: 18), textColor: .white)
+            sectionHeader.configurate(text: section.description(), font: UIFont(name: "Times New Roman", size: 18), textColor: .white)
             
             return sectionHeader
         }
@@ -212,17 +213,17 @@ extension GalleryViewController {
             }
             
             switch section {
-            case .paintings:
-                return self.createPaintingsSection()
-            case .ruBattleData:
+            case .battleEpisodeCase:
+                return self.createBattleEpisodeSection()
+            case .russianSideCase:
                 return self.createBattleData()
-            case .ru_persons:
+            case .russianCommandersCase:
                 return self.createPersonsSection()
-            case .frBattleData:
+            case .frenchSideCase:
                 return self.createBattleData()
-            case .f_persons:
+            case .frenchCommandersCase:
                 return self.createPersonsSection()
-            case .interestig:
+            case .interestigCase:
                 return self.createInterestingSection()
             }
             
@@ -235,7 +236,7 @@ extension GalleryViewController {
         return layout
     }
     
-    private func createPaintingsSection() -> NSCollectionLayoutSection {
+    private func createBattleEpisodeSection() -> NSCollectionLayoutSection {
         
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
         
@@ -253,10 +254,6 @@ extension GalleryViewController {
         // задать свойство прокручивания в горизонтальной прокрутке
         section.orthogonalScrollingBehavior = .continuous
         
-        // header
-//        let sectionHeader = createSectionHeader()
-//        section.boundarySupplementaryItems = [sectionHeader]
-        
         return section
         
     }
@@ -272,9 +269,10 @@ extension GalleryViewController {
         
         
         let section = NSCollectionLayoutSection(group: group)
+        
         section.interGroupSpacing = 7
         // размеры отсутпов по бокам
-        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 10, bottom: 0, trailing: 10)
+        section.contentInsets = NSDirectionalEdgeInsets.init(top: 16, leading: 10, bottom: 0, trailing: 0)
         
         // header
         let sectionHeader = createSectionHeader()
@@ -347,65 +345,52 @@ extension GalleryViewController {
     
 }
 
-extension GalleryViewController: UIScrollViewDelegate {
-    
-    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
-        
-        let defaultOffSet = view.safeAreaInsets.top
-        let offSet = scrollView.contentOffset.y + defaultOffSet
-        
-        navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offSet))
-    }
-}
-
 // MARK: - UICollectionViewDelegate
 extension GalleryViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        //let person = persons[indexPath.row]
-        let battleArray = battle[indexPath.row]
-        
+
         guard let section = Section(rawValue: indexPath.section) else { return }
         
         switch section {
             
-        case .paintings:
+        case .battleEpisodeCase:
             
-            
+            let battleArray = battle[indexPath.row]
             let battleDetailVC = BattleDetailViewController()
             battleDetailVC.battleDetail = battleArray
-            battleDetailVC.modalTransitionStyle = .coverVertical
-            //battleDetailVC.modalPresentationStyle = .fullScreen
-            //navigationController?.present(detailVC.self, animated: true)
+            battleDetailVC.modalPresentationStyle = .fullScreen
+            
             navigationController?.pushViewController(battleDetailVC, animated: true)
             
-        case .ruBattleData:
+        case .russianSideCase:
             print("123")
             
-        case .ru_persons:
-            print("123")
-//            persons = ruPersons
-//            let person = persons[indexPath.row]
-//
-//            let detailVC = PersonDetailViewController()
-//            detailVC.personsDetail = person
-//            detailVC.modalTransitionStyle = .coverVertical
-//            detailVC.modalPresentationStyle = .fullScreen
-//            //navigationController?.present(detailVC.self, animated: true)
-//            navigationController?.pushViewController(detailVC, animated: true)
-        case .frBattleData:
-            print("123")
-        case .f_persons:
+        case .russianCommandersCase:
+            let russianPersonArray = russianPersons[indexPath.row]
+
+            let personDetailVC = PersonDetailViewController()
+            personDetailVC.personsDetail = russianPersonArray
+            personDetailVC.modalTransitionStyle = .coverVertical
             
-            print("1213")
-//            let detailVC = PersonDetailViewController()
-//            detailVC.personsDetail = person
-//            detailVC.modalTransitionStyle = .coverVertical
-//            detailVC.modalPresentationStyle = .fullScreen
-//            //navigationController?.present(detailVC.self, animated: true)
-//            navigationController?.pushViewController(detailVC, animated: true)
-        case .interestig:
+            navigationController?.present(personDetailVC.self, animated: true)
+
+            
+        case .frenchSideCase:
+            print("123")
+            
+        case .frenchCommandersCase:
+            let frenchPersonArray = frenchPersons[indexPath.row]
+            
+            let personDetailVC = PersonDetailViewController()
+            personDetailVC.personsDetail = frenchPersonArray
+            personDetailVC.modalTransitionStyle = .coverVertical
+            
+
+            navigationController?.present(personDetailVC.self, animated: true)
+            
+        case .interestigCase:
             print("123")
         }
     }

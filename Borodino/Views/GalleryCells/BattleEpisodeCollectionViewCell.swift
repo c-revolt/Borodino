@@ -56,12 +56,15 @@ class BattleEpisodeCollectionViewCell: UICollectionViewCell, ConfiguringCell {
         return button
     }()
     
+    var battle: MGallery = MGallery()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         addSubviews()
         
         applyConstraints()
+        readButton.addTarget(self, action: #selector(readButtonPressed), for: .touchUpInside)
         
         
         //readButton.addTarget(self, action: #selector(readButtonPressed), for: .touchUpInside)
@@ -77,14 +80,18 @@ class BattleEpisodeCollectionViewCell: UICollectionViewCell, ConfiguringCell {
         paintingImageView.frame = contentView.bounds
     }
     
-//    @objc func readButtonPressed() {
-//        DispatchQueue.main.async { [weak self] in
-//            let viewController = BattleDetailViewController()
-//            viewController.configure(with:  viewModel)
-//            self?.navigationController?.pushViewController(viewController, animated: true)
-//        }
-//        
-//    }
+    @objc func readButtonPressed() {
+        
+        
+        let battleDetailVC = BattleDetailViewController()
+        //battleDetailVC.battleDetail = battle
+        //battleDetailVC.modalTransitionStyle = .coverVertical
+        battleDetailVC.modalPresentationStyle = .fullScreen
+    
+        //navigationController?.present(battleDetailVC.self, animated: true)
+        //navigationController?.pushViewController(battleDetailVC, animated: true)
+        
+    }
     
     func configure(with value: MGallery) {
         paintingImageView.image = UIImage(named: value.image ?? "photo")
@@ -100,6 +107,7 @@ extension BattleEpisodeCollectionViewCell {
         createGradient()
         addSubview(paintingTitleLabel)
         addSubview(readButton)
+        
     }
     
     private func applyConstraints() {

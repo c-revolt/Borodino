@@ -23,7 +23,7 @@ class PlaceAddressTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .gray
         label.textAlignment = .left
-        label.font = UIFont(name: "Apple SD Gothic Neo", size: 14)
+        label.font = UIFont(name: "Apple SD Gothic Neo", size: 15)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -48,8 +48,8 @@ class PlaceAddressTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             addressIconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             addressIconImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            addressIconImageView.widthAnchor.constraint(equalToConstant: 30),
-            addressIconImageView.heightAnchor.constraint(equalToConstant: 30)
+            addressIconImageView.widthAnchor.constraint(equalToConstant: 25),
+            addressIconImageView.heightAnchor.constraint(equalToConstant: 25)
         ])
         
         NSLayoutConstraint.activate([

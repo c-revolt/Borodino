@@ -7,13 +7,14 @@
 
 import UIKit
 
+
 class BattleDetailViewController: UIViewController {
 
     
     private var battleTableView: UITableView = {
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
-        
+        table.separatorStyle = .none
         table.register(BattleImageTableViewCell.self, forCellReuseIdentifier: BattleImageTableViewCell.reusedID)
         table.register(BattleTitleTableViewCell.self, forCellReuseIdentifier: BattleTitleTableViewCell.reusedId)
         table.register(BattleOverviewTableViewCell.self, forCellReuseIdentifier: BattleOverviewTableViewCell.reusedId)
@@ -23,7 +24,6 @@ class BattleDetailViewController: UIViewController {
         return table
     }()
     
-    let battleEpisodeJSONData = Bundle.main.decode([MBattle].self, from: "paintings.json")
     var battleDetail: MGallery = MGallery()
     
     
@@ -39,6 +39,8 @@ class BattleDetailViewController: UIViewController {
         battleTableView.contentInsetAdjustmentBehavior = .never
         
         setupNavigationBar()
+        
+        //parseJSON(jsonData: battleEpisodeJSONData)
     }
     
     override func viewDidLayoutSubviews() {
@@ -70,6 +72,7 @@ class BattleDetailViewController: UIViewController {
     
 
     
+    
 
 }
 
@@ -90,6 +93,8 @@ extension BattleDetailViewController: UITableViewDelegate, UITableViewDataSource
             }
             
             cell.battleImageView.image = UIImage(named: battleDetail.image ?? "photo")
+            cell.selectionStyle = .none
+            cell.separatorInset = .zero
             return cell
             
         case 1:
@@ -97,7 +102,8 @@ extension BattleDetailViewController: UITableViewDelegate, UITableViewDataSource
                 return UITableViewCell()
             }
             cell.battleTitleLabel.text = self.battleDetail.title
-            
+            cell.selectionStyle = .none
+            cell.separatorInset = .zero
             return cell
         case 2:
             
@@ -105,20 +111,25 @@ extension BattleDetailViewController: UITableViewDelegate, UITableViewDataSource
                 return UITableViewCell()
             }
             cell.battleOverviewLabel.text = battleDetail.overview
+            cell.selectionStyle = .none
+            cell.separatorInset = .zero
             return cell
         case 3:
             
             guard let cell = battleTableView.dequeueReusableCell(withIdentifier: BattlePlacemarkTableViewCell.reusedId, for: indexPath) as? BattlePlacemarkTableViewCell else {
                 return UITableViewCell()
             }
-            
+            cell.selectionStyle = .none
+            cell.separatorInset = .zero
             return cell
             
         case 4:
             guard let cell = battleTableView.dequeueReusableCell(withIdentifier: BattleMapTableViewCell.reusedId, for: indexPath) as? BattleMapTableViewCell else {
                 return UITableViewCell()
             }
-            
+            cell.configure(location: battleDetail.address ?? "Неизвестный адрес")
+            cell.selectionStyle = .none
+            cell.separatorInset = .zero
             return cell
             
         default:
