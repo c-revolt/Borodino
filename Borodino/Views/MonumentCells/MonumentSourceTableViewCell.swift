@@ -1,5 +1,5 @@
 //
-//  SourceMonumentTableViewCell.swift
+//  MonumentSourceTableViewCell.swift
 //  Borodino
 //
 //  Created by Александр Прайд on 23.06.2022.
@@ -9,7 +9,7 @@ import UIKit
 
 class MonumentSourceTableViewCell: UITableViewCell {
 
-    static let reusedIdentifire = "SourceMonumentTableViewCell"
+    static let reusedID = K.Monument.sourceReusedID
     
     private let iconSourceImageView: UIImageView = {
         let imageView = UIImageView()

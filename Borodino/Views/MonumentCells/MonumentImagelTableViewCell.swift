@@ -9,7 +9,8 @@ import UIKit
 
 class MonumentImagelTableViewCell: UITableViewCell {
 
-    static let reusedIdentifire = "ImageMonumentDetailTableViewCell"
+    static let reusedId = K.Monument.imageReusedID
+    
     
     let imageMonumentImageView: UIImageView = {
         let imageView = UIImageView()

@@ -1,5 +1,5 @@
 //
-//  PaintingCollectionViewCell.swift
+//  BattleEpisodeCollectionViewCell.swift
 //  Borodino
 //
 //  Created by Александр Прайд on 10.06.2022.
@@ -12,18 +12,9 @@ protocol ConfiguringCell {
     func configure(with value: MGallery)
 }
 
-protocol BattleEpisodeCollectionViewCellDelegate: AnyObject {
-    
-    func battleEpisodeCollectionViewCellDidTappedCell(_ cell: BattleEpisodeCollectionViewCell, viewModel: BattleDetailViewModel)
-}
-
 class BattleEpisodeCollectionViewCell: UICollectionViewCell, ConfiguringCell {
     
-    static var resuedId = K.paintingIdCell
-    
-    static let identifire = K.SectionTitles.paintings
-    
-    weak var delegate: BattleEpisodeCollectionViewCellDelegate?
+    static var resuedId = K.Gallery.episodesReusedID
     
     private let paintingImageView: UIImageView = {
         let imageView = UIImageView()

@@ -1,5 +1,5 @@
 //
-//  RuBattleDataCell.swift
+//  RussianSideDataCell.swift
 //  Borodino
 //
 //  Created by Александр Прайд on 14.06.2022.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class RuBattleDataCell: UICollectionViewCell, ConfiguringCell {
+class RussianSideDataCell: UICollectionViewCell, ConfiguringCell {
     
-    static var resuedId = K.ruBattleIIDCell
+    static var resuedId = K.Gallery.russianSideReusedID
 
     private let title: UILabel = {
         let label = UILabel()
@@ -75,7 +75,7 @@ class RuBattleDataCell: UICollectionViewCell, ConfiguringCell {
     
 }
 // MARK: - Setup UI Elements
-extension RuBattleDataCell {
+extension RussianSideDataCell {
     
     private func addSubviews() {
         addSubview(ruIcon)

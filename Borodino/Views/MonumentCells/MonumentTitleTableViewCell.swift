@@ -1,5 +1,5 @@
 //
-//  TitleMonumentDetailTableViewCell.swift
+//  MonumentTItleTableViewCell.swift
 //  Borodino
 //
 //  Created by Александр Прайд on 23.06.2022.
@@ -7,15 +7,15 @@
 
 import UIKit
 
-class MonumentTItleTableViewCell: UITableViewCell {
+class MonumentTitleTableViewCell: UITableViewCell {
 
-    static let reusedIdetntifire = "TitleMonumentDetailTableViewCell"
+    static let reusedId = K.Monument.titleReusedID
     
     let mainTitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .left
-        //label.font = UIFont(name: "Times New Romans", size: 22)
+        label.font = UIFont(name: "Times New Romans", size: 25)
         label.font = .boldSystemFont(ofSize: 25)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false

@@ -1,5 +1,5 @@
 //
-//  FrBattleDataCell.swift
+//  FrenchSideDataCell.swift
 //  Borodino
 //
 //  Created by Александр Прайд on 14.06.2022.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class FrBattleDataCell: UICollectionViewCell, ConfiguringCell {
+class FrenchSideDataCell: UICollectionViewCell, ConfiguringCell {
 
-    static var resuedId = K.frBattleIDCell
+    static var resuedId = K.Gallery.frenchSideReusedID
 
     private let title: UILabel = {
         let label = UILabel()
@@ -68,7 +68,7 @@ class FrBattleDataCell: UICollectionViewCell, ConfiguringCell {
 }
 
 // MARK: - Setup UI Elements
-extension FrBattleDataCell {
+extension FrenchSideDataCell {
     
     private func addSubviews() {
         addSubview(frIcon)

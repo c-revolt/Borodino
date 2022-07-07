@@ -1,5 +1,5 @@
 //
-//  AddressMonumentDetailTableViewCell.swift
+//  MonumentAddressTableViewCell.swift
 //  Borodino
 //
 //  Created by Александр Прайд on 23.06.2022.
@@ -9,7 +9,7 @@ import UIKit
 
 class MonumentAddressTableViewCell: UITableViewCell {
 
-    static let reeusedIdentifire = "AddressMonumentDetailTableViewCell"
+    static let reusedID = K.Monument.addressReusedID
     
     private let addressIconImageView: UIImageView = {
         let imageView = UIImageView()

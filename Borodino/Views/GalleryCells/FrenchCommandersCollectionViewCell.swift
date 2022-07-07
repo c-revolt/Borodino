@@ -1,15 +1,16 @@
 //
-//  RuPersonCollectionViewCell.swift
+//  FrenchCommandersCollectionViewCell.swift
 //  Borodino
 //
-//  Created by Александр Прайд on 14.06.2022.
+//  Created by Александр Прайд on 10.06.2022.
 //
 
 import UIKit
 
-class RuPersonCollectionViewCell: UICollectionViewCell, ConfiguringCell {
+
+class FrenchCommandersCollectionViewCell: UICollectionViewCell, ConfiguringCell  {
     
-    static var resuedId = K.ruPersonIDCell
+    static var resuedId = K.Gallery.frenchCommanderReusedID
 
     
     private let personImageView: UIImageView = {
@@ -17,8 +18,9 @@ class RuPersonCollectionViewCell: UICollectionViewCell, ConfiguringCell {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 31
+        imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 1
-        imageView.layer.borderColor = UIColor.systemGreen.cgColor
+        imageView.layer.borderColor = UIColor.systemBlue.cgColor
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -55,7 +57,7 @@ class RuPersonCollectionViewCell: UICollectionViewCell, ConfiguringCell {
     
     private let gradientView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = .systemBlue
         
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -90,7 +92,7 @@ class RuPersonCollectionViewCell: UICollectionViewCell, ConfiguringCell {
     }
 }
 
-extension RuPersonCollectionViewCell {
+extension FrenchCommandersCollectionViewCell {
     
     private func addSubviews() {
         contentView.addSubview(personImageView)
@@ -137,3 +139,5 @@ extension RuPersonCollectionViewCell {
         ])
     }
 }
+
+

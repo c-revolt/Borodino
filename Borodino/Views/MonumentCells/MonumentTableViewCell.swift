@@ -7,14 +7,9 @@
 
 import UIKit
 
-protocol MonumentTableViewCellDelegate: AnyObject {
-    
-    func MonumentTableViewCellDidTappedCell(_ cell: MonumentTableViewCell, viewModel: MonumentViewModel)
-}
-
 class MonumentTableViewCell: UITableViewCell {
 
-    static let reusedId = "MonumentTableViewCell"
+    static let reusedId = K.Monument.monumentTableViewCellReusedID
     
     private let monImageView: UIImageView = {
         let imageView = UIImageView()

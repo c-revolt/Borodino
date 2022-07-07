@@ -13,14 +13,12 @@ class MonumentTableViewController: UIViewController {
     let monumentsJSONData = Bundle.main.decode([MMonument].self, from: "monumentsData.json")
     private var timer = Timer()
     private var searching = false
-    private var searchingMonument = [MMonument]()
+    var searchingMonument = [MMonument]()
     
     private let tableView: UITableView = {
         let table = UITableView()
         table.backgroundColor = .systemBackground
-        
         table.register(MonumentTableViewCell.self, forCellReuseIdentifier: MonumentTableViewCell.reusedId)
-        
         table.translatesAutoresizingMaskIntoConstraints = false
         return table
     }()
@@ -34,6 +32,7 @@ class MonumentTableViewController: UIViewController {
         tableView.dataSource = self
         
         monuments = monumentsJSONData
+        //searchingMonument = monumentsJSONData
         
         setupNavigationBar()
         setupSearchBar()
@@ -60,9 +59,16 @@ class MonumentTableViewController: UIViewController {
     
     private func setupSearchBar() {
         let searchController = UISearchController(searchResultsController: nil)
+        searchController.loadViewIfNeeded()
+        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.enablesReturnKeyAutomatically = false
+        searchController.searchBar.returnKeyType = UIReturnKeyType.done
         navigationItem.searchController = searchController
         searchController.hidesNavigationBarDuringPresentation = true
-        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        
         searchController.searchBar.placeholder = "Поиск памятников..."
         
         searchController.searchBar.searchTextField.textColor = .white
@@ -130,35 +136,35 @@ extension MonumentTableViewController:  UITableViewDelegate, UITableViewDataSour
     
 }
 
-extension MonumentTableViewController: UISearchBarDelegate {
+// MARK: - UISearchBarDelegate, UISearchResultsUpdating
+extension MonumentTableViewController: UISearchBarDelegate, UISearchResultsUpdating {
+
     
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//             print(searchText)
-//    }
-    
-    func updateResults(for searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         guard let searchText = searchController.searchBar.text else { return }
-        
+
         if !searchText.isEmpty {
             searching = true
             searchingMonument.removeAll()
-            
+
             for monument in monuments {
                 if ((monument.title?.lowercased().contains(searchText.lowercased())) != nil) {
                     searchingMonument.append(monument)
                 }
             }
-            
+
         } else {
             searching = false
             searchingMonument.removeAll()
             searchingMonument = monuments
         }
-        
+
         tableView.reloadData()
     }
     
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
         searching = false
         searchingMonument.removeAll()
         

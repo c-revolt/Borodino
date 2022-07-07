@@ -1,5 +1,5 @@
 //
-//  OverviewMonumentDetailTableViewCell.swift
+//  MonumentOverviewTableViewCell.swift
 //  Borodino
 //
 //  Created by Александр Прайд on 23.06.2022.
@@ -10,7 +10,7 @@ import UIKit
 class MonumentOverviewTableViewCell: UITableViewCell {
 
     
-    static var resuedIdentifire = "OverviewMonumentDetailTableViewCell"
+    static var reusedID = K.Monument.overviewReusedID
     
     let overviewLabel: UILabel = {
         let label = UILabel()

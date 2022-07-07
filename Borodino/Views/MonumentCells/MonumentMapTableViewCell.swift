@@ -10,7 +10,7 @@ import MapKit
 
 class MonumentMapTableViewCell: UITableViewCell {
 
-    static let reusedId = "MapMonumentDetailTableViewCell"
+    static let reusedId = K.Monument.mapReusedID
     
     let mapView: MKMapView = {
         let map = MKMapView()

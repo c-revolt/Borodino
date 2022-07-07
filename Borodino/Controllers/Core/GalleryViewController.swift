@@ -103,21 +103,7 @@ extension GalleryViewController {
             navigationBar?.shadowImage = UIImage()
         navigationBar?.backgroundColor = .clear
         
-    }
-
-
-
-//    func scrollViewDidScroll(scrollView: UIScrollView) {
-//        let offset : CGFloat = scrollView.contentOffset.y
-//        if (offset > 50) {
-//            let alpha : CGFloat = min(CGFloat(1), CGFloat(1) - (CGFloat(50) + (navigationView.frame.height) - offset) / (navigationView.frame.height))
-//            navigationView.alpha = CGFloat(alpha)
-//        } else {
-//            navigationView.alpha = 0.0
-//        }
-//
-//    }
-    
+    }    
     
     private func setupCollectionView() {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createCompositionalLayout())
@@ -128,10 +114,10 @@ extension GalleryViewController {
         collectionView.register(SectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeader.reusedId)
         
         collectionView.register(BattleEpisodeCollectionViewCell.self, forCellWithReuseIdentifier: BattleEpisodeCollectionViewCell.resuedId)
-        collectionView.register(RuBattleDataCell.self, forCellWithReuseIdentifier: RuBattleDataCell.resuedId)
-        collectionView.register(RuPersonCollectionViewCell.self, forCellWithReuseIdentifier: RuPersonCollectionViewCell.resuedId)
-        collectionView.register(FrBattleDataCell.self, forCellWithReuseIdentifier: FrBattleDataCell.resuedId)
-        collectionView.register(FrPersonCollectionViewCell.self, forCellWithReuseIdentifier: FrPersonCollectionViewCell.resuedId)
+        collectionView.register(RussianSideDataCell.self, forCellWithReuseIdentifier: RussianSideDataCell.resuedId)
+        collectionView.register(RussianCommandersCollectionViewCell.self, forCellWithReuseIdentifier: RussianCommandersCollectionViewCell.resuedId)
+        collectionView.register(FrenchSideDataCell.self, forCellWithReuseIdentifier: FrenchSideDataCell.resuedId)
+        collectionView.register(FrenchCommandersCollectionViewCell.self, forCellWithReuseIdentifier: FrenchCommandersCollectionViewCell.resuedId)
         collectionView.register(InterestingCollectionViewCell.self, forCellWithReuseIdentifier: InterestingCollectionViewCell.resuedId)
     
     }
@@ -169,17 +155,17 @@ extension GalleryViewController {
                 
             case .russianSideCase:
                 
-                return self.configure(cellType: RuBattleDataCell.self, with: gallery, for: indexPath)
+                return self.configure(cellType: RussianSideDataCell.self, with: gallery, for: indexPath)
                 
             case .russianCommandersCase:
-                return self.configure(cellType: RuPersonCollectionViewCell.self, with: gallery, for: indexPath)
+                return self.configure(cellType: RussianCommandersCollectionViewCell.self, with: gallery, for: indexPath)
                 
             case .frenchSideCase:
-                return self.configure(cellType: FrBattleDataCell.self, with: gallery, for: indexPath)
+                return self.configure(cellType: FrenchSideDataCell.self, with: gallery, for: indexPath)
                 
             case .frenchCommandersCase:
                 
-                return self.configure(cellType: FrPersonCollectionViewCell.self, with: gallery, for: indexPath)
+                return self.configure(cellType: FrenchCommandersCollectionViewCell.self, with: gallery, for: indexPath)
                 
             case .interestigCase:
                 return self.configure(cellType: InterestingCollectionViewCell.self, with: gallery, for: indexPath)

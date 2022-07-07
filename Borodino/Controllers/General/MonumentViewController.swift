@@ -18,12 +18,12 @@ class MonumentViewController: UIViewController {
         table.translatesAutoresizingMaskIntoConstraints = false
         table.separatorStyle = .none
         
-        table.register(MonumentImagelTableViewCell.self, forCellReuseIdentifier: MonumentImagelTableViewCell.reusedIdentifire)
-        table.register(MonumentTItleTableViewCell.self, forCellReuseIdentifier: MonumentTItleTableViewCell.reusedIdetntifire)
-        table.register(MonumentSourceTableViewCell.self, forCellReuseIdentifier: MonumentSourceTableViewCell.reusedIdentifire)
-        table.register(MonumentAddressTableViewCell.self, forCellReuseIdentifier: MonumentAddressTableViewCell.reeusedIdentifire)
-        table.register(MonumentHeaderTableViewCell.self, forCellReuseIdentifier: MonumentHeaderTableViewCell.reusedIdentifire)
-        table.register(MonumentOverviewTableViewCell.self, forCellReuseIdentifier: MonumentOverviewTableViewCell.resuedIdentifire)
+        table.register(MonumentImagelTableViewCell.self, forCellReuseIdentifier: MonumentImagelTableViewCell.reusedId)
+        table.register(MonumentTitleTableViewCell.self, forCellReuseIdentifier: MonumentTitleTableViewCell.reusedId)
+        table.register(MonumentSourceTableViewCell.self, forCellReuseIdentifier: MonumentSourceTableViewCell.reusedID)
+        table.register(MonumentAddressTableViewCell.self, forCellReuseIdentifier: MonumentAddressTableViewCell.reusedID)
+        table.register(MonumentHeaderTableViewCell.self, forCellReuseIdentifier: MonumentHeaderTableViewCell.reusedID)
+        table.register(MonumentOverviewTableViewCell.self, forCellReuseIdentifier: MonumentOverviewTableViewCell.reusedID)
         table.register(MonumentBottomHeaderTableViewCell.self, forCellReuseIdentifier: MonumentBottomHeaderTableViewCell.reusedId)
         table.register(MonumentMapTableViewCell.self, forCellReuseIdentifier: MonumentMapTableViewCell.reusedId)
         
@@ -93,7 +93,7 @@ extension MonumentViewController: UITableViewDelegate, UITableViewDataSource {
             
         case 0:
             
-            guard let cell = monumentTableView.dequeueReusableCell(withIdentifier: MonumentImagelTableViewCell.reusedIdentifire, for: indexPath) as? MonumentImagelTableViewCell else {
+            guard let cell = monumentTableView.dequeueReusableCell(withIdentifier: MonumentImagelTableViewCell.reusedId, for: indexPath) as? MonumentImagelTableViewCell else {
                 return UITableViewCell()
             }
             
@@ -104,7 +104,7 @@ extension MonumentViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
             
         case 1:
-            guard let cell = monumentTableView.dequeueReusableCell(withIdentifier: MonumentTItleTableViewCell.reusedIdetntifire, for: indexPath) as? MonumentTItleTableViewCell else {
+            guard let cell = monumentTableView.dequeueReusableCell(withIdentifier: MonumentTitleTableViewCell.reusedId, for: indexPath) as? MonumentTitleTableViewCell else {
                 return UITableViewCell()
             }
             
@@ -116,7 +116,7 @@ extension MonumentViewController: UITableViewDelegate, UITableViewDataSource {
         
         case 2:
             
-            guard let cell = monumentTableView.dequeueReusableCell(withIdentifier: MonumentSourceTableViewCell.reusedIdentifire, for: indexPath) as? MonumentSourceTableViewCell else {
+            guard let cell = monumentTableView.dequeueReusableCell(withIdentifier: MonumentSourceTableViewCell.reusedID, for: indexPath) as? MonumentSourceTableViewCell else {
                 return UITableViewCell()
             }
             
@@ -127,7 +127,7 @@ extension MonumentViewController: UITableViewDelegate, UITableViewDataSource {
             
         case 3:
             
-            guard let cell = monumentTableView.dequeueReusableCell(withIdentifier: MonumentAddressTableViewCell.reeusedIdentifire, for: indexPath) as? MonumentAddressTableViewCell else {
+            guard let cell = monumentTableView.dequeueReusableCell(withIdentifier: MonumentAddressTableViewCell.reusedID, for: indexPath) as? MonumentAddressTableViewCell else {
                 return UITableViewCell()
             }
             
@@ -138,7 +138,7 @@ extension MonumentViewController: UITableViewDelegate, UITableViewDataSource {
             
         case 4:
             
-            guard let cell = monumentTableView.dequeueReusableCell(withIdentifier: MonumentHeaderTableViewCell.reusedIdentifire, for: indexPath) as? MonumentHeaderTableViewCell else {
+            guard let cell = monumentTableView.dequeueReusableCell(withIdentifier: MonumentHeaderTableViewCell.reusedID, for: indexPath) as? MonumentHeaderTableViewCell else {
                 return UITableViewCell()
             }
             
@@ -149,7 +149,7 @@ extension MonumentViewController: UITableViewDelegate, UITableViewDataSource {
             
         
         case 5:
-            guard let cell = monumentTableView.dequeueReusableCell(withIdentifier: MonumentOverviewTableViewCell.resuedIdentifire, for: indexPath) as? MonumentOverviewTableViewCell else {
+            guard let cell = monumentTableView.dequeueReusableCell(withIdentifier: MonumentOverviewTableViewCell.reusedID, for: indexPath) as? MonumentOverviewTableViewCell else {
                 return UITableViewCell()
             }
             

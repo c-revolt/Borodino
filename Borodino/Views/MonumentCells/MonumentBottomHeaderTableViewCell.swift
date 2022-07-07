@@ -1,5 +1,5 @@
 //
-//  BottomHeaderAndSeparatorTableViewCell.swift
+//  MonumentBottomHeaderTableViewCell.swift
 //  Borodino
 //
 //  Created by Александр Прайд on 23.06.2022.
@@ -10,7 +10,7 @@ import UIKit
 class MonumentBottomHeaderTableViewCell: UITableViewCell {
 
     
-    static let reusedId = "BottomHeaderAndSeparatorTableViewCell"
+    static let reusedId = K.Monument.bottomHeaderReusedID
     
     private let overviewTitleLabel: UILabel = {
         let label = UILabel()

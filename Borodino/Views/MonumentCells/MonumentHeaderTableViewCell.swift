@@ -1,5 +1,5 @@
 //
-//  HeaderOverviewTableViewCell.swift
+//  MonumentHeaderTableViewCell.swift
 //  Borodino
 //
 //  Created by Александр Прайд on 23.06.2022.
@@ -9,7 +9,7 @@ import UIKit
 
 class MonumentHeaderTableViewCell: UITableViewCell {
 
-    static let reusedIdentifire = "HeaderOverviewTableViewCell"
+    static let reusedID = K.Monument.headerReusedID
     
     private let overviewTitleLabel: UILabel = {
         let label = UILabel()

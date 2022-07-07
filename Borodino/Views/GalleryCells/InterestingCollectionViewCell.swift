@@ -9,7 +9,7 @@ import UIKit
 
 class InterestingCollectionViewCell: UICollectionViewCell, ConfiguringCell {
     
-    static var resuedId = K.interestingIDCell
+    static var resuedId = K.Gallery.interestingReusedID
     
     private let titleImageView: UIImageView = {
         let imageView = UIImageView()
